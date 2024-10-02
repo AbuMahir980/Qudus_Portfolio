@@ -124,3 +124,18 @@ export const projects = [
         live: "https://live-link.com"
     },
 ];
+
+export const navContents = [
+    { title: 'About', id: '#about' },
+    { title: 'Skills', id: '#skills' },
+    { title: 'Projects', id: '#projects' },
+    { title: 'Experience', id: '#experience' },
+    { title: 'Contact', id: '#contact' },
+];
+
+export const socialLinks = [
+    { name: "GitHub", url: "https://github.com/AbuMahir980", icon: "FaGithub" },
+    { name: "Instagram", url: "https://www.instagram.com/abu_maahir980", icon: "FaInstagram" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/qudus-lawal-adebola", icon: "FaLinkedin" },
+    { name: "Twitter", url: "https://x.com/Abu_Maahir980", icon: "FaXTwitter" }
+];

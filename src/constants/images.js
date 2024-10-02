@@ -25,3 +25,7 @@ export {default as jobScout} from '../assets/projects/jobScout.png'
 export {default as expenseTrack} from '../assets/projects/expenditureTracker.png'
 export {default as opendesk} from '../assets/projects/opendesk.png'
 export {default as techBrain} from '../assets/projects/techBrain.png'
+
+//hero
+export {default as bgImage} from '../assets/lasgidi_hero_bg.jpg'
+export {default as profilePics} from '../assets/headShot.jpg'

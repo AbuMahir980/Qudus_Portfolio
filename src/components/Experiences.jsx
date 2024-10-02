@@ -16,7 +16,7 @@ const Experiences = () => {
                 {experiences.map((experience, i) => (
                     <div
                     key={i}
-                    className="flex flex-col justify-center items-center rounded-lg drop-shadow-2xl bg-white px-5 py-5 lg:flex-row">
+                    className="flex flex-col justify-center items-center rounded-lg drop-shadow-2xl bg-white px-5 py-5 lg:flex-row transform transition-all duration-500 ease-in-out hover:scale-105 hover:bg-blue-950 hover:text-white">
                     {/* Company Image */}
                         <div className="w-16 h-16 md:w-28 md:h-28 flex-shrink-0 mb-4 md:mb-0 md:mr-8 self-start">
                             <img src={experience.logo} alt={experience.company} className="w-full h-full object-contain rounded-full" />
