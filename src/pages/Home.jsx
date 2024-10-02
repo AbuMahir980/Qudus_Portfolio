@@ -3,12 +3,14 @@ import React from 'react'
 import About from '../components/About'
 import Skills from '../components/Skills'
 import Experiences from '../components/Experiences'
+import Projects from '../components/Projects'
 
 const Home = () => {
     return (
-        <div className='container mx-auto px-4 bg-white md:container md:mx-auto md:px-20'>
+        <div className='container mx-auto px-4 bg-white md:container md:mx-auto md:px-20 space-y-10'>
             <About />
             <Skills />
+            <Projects />
             <Experiences />
         </div>
     )

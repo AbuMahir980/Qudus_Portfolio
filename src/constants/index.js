@@ -1,4 +1,4 @@
-import { frontend, backend, projectMgt, css, html, javascript, git, nodejs, reactjs, redux, tailwind, typescript, figma, genialSata } from '../constants/images'
+import { frontend, backend, projectMgt, css, html, javascript, git, nodejs, reactjs, redux, tailwind, typescript, figma, genialSata, zulfah, jobScout, expenseTrack, techBrain, opendesk } from '../constants/images'
 export const services = [
     {
         id: 0,
@@ -62,34 +62,65 @@ export const technologies = [
 
 export const experiences = [
     {
-        logo: '/path/to/zulfah-group-logo.png',
-        role: 'FullStack Engineer Intern, Team-Lead & Project Manager',
+        logo: zulfah,
+        role: 'FullStack Engineer Intern',
         company: 'Zulfah Group',
         location: 'Lagos, Nigeria',
         dateRange: 'August 2023 - Present',
-        // responsibilities: [
-        // 'Defined project scope, milestones, timelines, and deliverables, while effectively managing resources and mitigating risks.',
-        // 'Led the development of application features for a SaaS platform, ensuring scalability, functionality, and alignment with business goals.',
-        // 'Developed and integrated RESTful APIs and third-party APIs, focusing on secure and scalable architecture.',
-        // 'Collaborated with the team on backend functionalities including user management, transaction processing, and secure financial operations.',
-        // 'Utilized security and validation libraries to enforce best practices, conducted code reviews, and managed version control with GitHub.',
-        // 'Tested API endpoints with Postman and integrated transactional email features to improve user interaction and operational efficiency.',
-        // 'Facilitated team meetings, stand-ups, and sprint reviews to track progress, address roadblocks, and ensure continuous alignment with project goals.',
-        // 'Coordinated teams and communicated with stakeholders to align development, manage expectations, and ensure client satisfaction.'
-        // ]
     },
     {
         logo: genialSata,
-        role: 'Project Manager, Tech Lead (Remote)',
+        role: 'Project Manager (Remote)',
         company: 'GenialSata',
         location: 'Lagos, Nigeria',
         dateRange: 'April 2024 - June 2024',
-        // responsibilities: [
-        // 'Led the planning phase for a Job Automation Chrome Extension.',
-        // 'Conducted extensive market research to determine market fit and define the unique selling proposition.',
-        // 'Performed competitive analysis to compare the proposed solution with existing job automation platforms.',
-        // 'Developed a strategic plan that outlined key differentiators and market positioning.',
-        // 'Created a comprehensive development workflow that was ready for execution upon project initiation.'
-        // ]
     }
+];
+
+export const projects = [
+    {
+        title: "Job Search Platform",
+        description: "A platform for searching and applying to jobs built with HTML, CSS, and JavaScript.",
+        image: jobScout, // Replace with actual image URL
+        tools: [
+        { name: "HTML", icon: html },
+        { name: "CSS", icon: css },
+        { name: "JavaScript", icon: javascript }
+        ],
+        github: "https://github.com/AbuMahir980/JobScout-VEPH839-86A",
+        live: "https://jobscout.netlify.app"
+    },
+    {
+        title: "Expenditure Tracker",
+        description: "An intuitive expense management app built with React, Tailwind CSS, and Recharts for tracking and categorizing personal and business expenses.",
+        image: expenseTrack,
+        tools: [
+        { name: "React", icon: reactjs },
+        { name: "TailwindCss", icon: tailwind },
+        ],
+        github: "https://github.com/AbuMahir980/remittance-tracker",
+        live: "https://expenditure-tracking.netlify.app/"
+    },
+    {
+        title: "Open-desk Clone",
+        description: "An OpenDesk clone built with React and Tailwind CSS, providing a sleek interface for browsing and exploring furniture collections.",
+        image: opendesk,
+        tools: [
+        { name: "React", icon: reactjs },
+        { name: "TailwindCss", icon: tailwind },
+        ],
+        github: "https://github.com/AbuMahir980/react-opendesk-clone",
+        live: "https://cloned-project.netlify.app/"
+    },
+    {
+        title: "Tech Brain",
+        description: "A virtual reality landing page, built with HTML and CSS to practice layout techniques.",
+        image: techBrain,
+        tools: [
+        { name: "HTML", icon: html },
+        { name: "CSS", icon: css },
+        ],
+        github: "https://github.com/your-second-repo",
+        live: "https://live-link.com"
+    },
 ];
