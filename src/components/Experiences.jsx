@@ -5,7 +5,7 @@ import { download } from '../constants/images'
 
 const Experiences = () => {
     return (
-        <div className='space-y-8 rounded-tr-[100px] rounded-bl-[80px] p-5 bg-black lg:p-10'>
+        <div className='space-y-8 rounded-tr-[100px] rounded-bl-[80px] p-5 bg-gray-900 lg:p-10'>
             <div>
                 <p className='text-gray-500 text-sm font-semibold xl:text-lg'>WHAT I&#39;VE DONE SO FAR</p>
                 <h2 className='font-black text-white text-2xl xl:text-4xl'>EXPERIENCES.</h2>
