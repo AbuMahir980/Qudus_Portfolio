@@ -139,3 +139,9 @@ export const socialLinks = [
     { name: "LinkedIn", url: "https://www.linkedin.com/in/qudus-lawal-adebola", icon: "FaLinkedin" },
     { name: "Twitter", url: "https://x.com/Abu_Maahir980", icon: "FaXTwitter" }
 ];
+
+export const resume = [
+    {
+        link: 'https://drive.google.com/file/d/13PNY3l_kCjmcbOeNI0rIPGivh1GTRtrg/view?usp=sharing'
+    }
+]

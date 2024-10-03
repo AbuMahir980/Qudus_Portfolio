@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { experiences } from '../constants'
+import { experiences, resume} from '../constants'
 import { download } from '../constants/images'
 
 const Experiences = () => {
@@ -32,9 +32,9 @@ const Experiences = () => {
                 ))}
             </div>
             <div className='bg-white px-10 py-5 rounded-xl ml-8 md:ml-20 w-[70%] md:w-[20%]'>
-                <div className='bg-gray-700 flex justify-around items-center p-3 rounded-md hover:text-gray-500'>
-                    <a href="https://drive.google.com/file/d/1ZOLeETJGxipb50jGH71E_9KCquq_euBN/view?usp=sharing" target='_blank' className="text-white font-semibold text-sm hover:text-gray-500">MY RESUME </a>
-                    <img src={download} alt="" className='w-5 h-5 hover:text-gray-500'/>
+                <div className='bg-gray-700 flex justify-around items-center p-3 rounded-md'>
+                    <a href={`${resume[0].link}`} target='_blank' className="text-white font-semibold text-sm hover:text-gray-500">MY RESUME </a>
+                    <img src={download} alt="" className='w-5 h-5 hover:opacity-75'/>
                 </div>
             </div>
         </div>
