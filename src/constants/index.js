@@ -63,7 +63,7 @@ export const technologies = [
 export const experiences = [
     {
         logo: zulfah,
-        role: 'FullStack Engineer Intern',
+        role: 'FullStack Engineer',
         company: 'Zulfah Group',
         location: 'Lagos, Nigeria',
         dateRange: 'August 2023 - Present',
