@@ -20,43 +20,53 @@ export const services = [
 export const technologies = [
     {
         id: 0,
-        image: css
+        image: css,
+        name: css,
     },
     {
         id: 1,
-        image: html
+        image: html,
+        name: html,
     },
     {
         id: 2,
-        image: javascript
+        image: javascript,
+        name: javascript,
     },
     {
         id: 3,
-        image: git
+        image: git,
+        name: git,
     },
     {
         id: 4,
-        image: nodejs
+        image: nodejs,
+        name: nodejs,
     },
     {
         id: 5,
-        image: reactjs
+        image: reactjs,
+        name: reactjs
     },
     {
         id: 6,
-        image: redux
+        image: redux,
+        name: redux
     },
     {
         id: 7,
-        image: tailwind
+        image: tailwind,
+        name: tailwind
     },
     {
         id: 8,
-        image: typescript
+        image: typescript,
+        name: typescript,
     },
     {
         id: 9,
-        image: figma
+        image: figma,
+        name: figma,
     },
 ]
 
