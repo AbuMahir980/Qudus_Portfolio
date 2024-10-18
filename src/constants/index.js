@@ -1,4 +1,4 @@
-import { frontend, backend, projectMgt, css, html, javascript, git, nodejs, reactjs, redux, tailwind, typescript, figma, genialSata, zulfah, jobScout, expenseTrack, techBrain, opendesk } from '../constants/images'
+import { frontend, backend, projectMgt, css, html, javascript, git, nodejs, reactjs, redux, tailwind, typescript, figma, genialSata, zulfah, jobScout, expenseTrack, techBrain, opendesk, arckitchen, arcKitchen1 } from '../constants/images'
 export const services = [
     {
         id: 0,
@@ -62,6 +62,13 @@ export const technologies = [
 
 export const experiences = [
     {
+        logo: arckitchen,
+        role: 'Contract Web Developer',
+        company: 'Arc Kitchen',
+        location: 'Lagos, Nigeria',
+        dateRange: 'Contract',
+    },
+    {
         logo: zulfah,
         role: 'FullStack Engineer',
         company: 'Zulfah Group',
@@ -78,6 +85,17 @@ export const experiences = [
 ];
 
 export const projects = [
+    {
+        title: "Arc Kitchen",
+        description: "A cloud-based kitchen that cooks and delivers a variety of dishes to customers' doorsteps, built with React for a seamless user experience.",
+        image: arcKitchen1, // Replace with actual image URL
+        tools: [
+        { name: "React", icon: reactjs },
+        { name: "TailwindCss", icon: tailwind },
+        ],
+        github: "https://github.com/AbuMahir980/ArcKitchen",
+        live: "https://thearckitchen.netlify.app/"
+    },
     {
         title: "Job Search Platform",
         description: "A platform for searching and applying to jobs built with HTML, CSS, and JavaScript.",
@@ -142,6 +160,6 @@ export const socialLinks = [
 
 export const resume = [
     {
-        link: 'https://drive.google.com/file/d/13PNY3l_kCjmcbOeNI0rIPGivh1GTRtrg/view?usp=sharing'
+        link: 'https://drive.google.com/file/d/1_FRI1yJxWVhj72pqLTaGy1qsSvbCe15C/view?usp=sharing'
     }
 ]

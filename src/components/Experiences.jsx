@@ -11,7 +11,7 @@ const Experiences = () => {
                 <h2 className='font-black text-white text-2xl xl:text-4xl'>EXPERIENCES.</h2>
             </div>
 
-            <div className="gap-6 flex flex-col justify-between items-center px-5 md:flex-row xl:justify-center">
+            <div className="gap-6 grid grid-cols-1 justify-between items-center px-5 md:grid-cols-2 xl:justify-center">
             
                 {experiences.map((experience, i) => (
                     <div
@@ -31,7 +31,7 @@ const Experiences = () => {
                     </div>
                 ))}
             </div>
-            <div className='bg-white px-10 py-5 rounded-xl ml-8 md:ml-20 w-[70%] md:w-[20%]'>
+            <div className='bg-white px-10 py-5 rounded-xl ml-8  w-[70%] md:w-[40%] lg:w-[20%]'>
                 <div className='bg-gray-700 flex justify-around items-center p-3 rounded-md'>
                     <a href={`${resume[0].link}`} target='_blank' className="text-white font-semibold text-sm hover:text-gray-500">MY RESUME </a>
                     <img src={download} alt="" className='w-5 h-5 hover:opacity-75'/>
