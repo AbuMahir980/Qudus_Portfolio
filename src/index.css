@@ -1,10 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-    scroll-behavior: smooth;
+:root {
+  color-scheme: light dark;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
+body {
+  @apply antialiased transition-colors duration-300;
+}
+
+.dark body {
+  @apply bg-[#09090b] text-white;
+}
+
+.light body {
+  @apply bg-white text-zinc-950;
+}
+
+/* Custom Selection */
+::selection {
+  @apply bg-cyan-500/30 text-cyan-200;
+}
