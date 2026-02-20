@@ -4,7 +4,7 @@ import { fadeIn, staggerContainer } from '../../lib/animations';
 import { usePage } from '../../context/PageContext';
 import { cn } from '../../lib/utils';
 import { Link } from 'react-router-dom';
-import { Download, ArrowRight, Github, Linkedin, Twitter } from 'lucide-react';
+import { Download, ArrowRight, Github, Linkedin, Twitter, X } from 'lucide-react';
 import EditorialButton from '../ui/EditorialButton';
 
 const TYPE_SPEED = 100;
@@ -83,16 +83,7 @@ const Hero: React.FC = () => {
 
                     <motion.div variants={fadeIn}>
                         <Link
-                            to={window.innerWidth < 768 ? "#about" : "/about"}
-                            onClick={(e) => {
-                                if (window.innerWidth < 768) {
-                                    const el = document.querySelector("#about");
-                                    if (el) {
-                                        e.preventDefault();
-                                        el.scrollIntoView({ behavior: "smooth" });
-                                    }
-                                }
-                            }}
+                            to="/about"
                             className="group flex items-center justify-center gap-2 text-sm font-semibold text-cyan-500 hover:text-cyan-400 transition-colors"
                         >
                             Learn about me
@@ -114,7 +105,7 @@ const Hero: React.FC = () => {
                     </EditorialButton>
                     <EditorialButton
                         variant="outline"
-                        onClick={() => window.location.href = 'mailto:quduslawal@gmail.com'}
+                        onClick={() => window.location.href = 'mailto:lawalqudus980@gmail.com'}
                     >
                         Get in Touch <ArrowRight size={18} />
                     </EditorialButton>
@@ -125,13 +116,13 @@ const Hero: React.FC = () => {
                     variants={fadeIn}
                     className="flex items-center justify-center gap-6"
                 >
-                    <a href="https://github.com/qudusayo" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-cyan-500 transition-colors">
+                    <a href="https://github.com/AbuMahir980" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-cyan-500 transition-colors">
                         <Github size={20} />
                     </a>
-                    <a href="https://linkedin.com/in/qudusayo" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-cyan-500 transition-colors">
+                    <a href="https://linkedin.com/in/qudus-lawal-adebola" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-cyan-500 transition-colors">
                         <Linkedin size={20} />
                     </a>
-                    <a href="https://twitter.com/qudusayo" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-cyan-500 transition-colors">
+                    <a href="https://x.com/abu_maahir980" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-cyan-500 transition-colors">
                         <Twitter size={20} />
                     </a>
                 </motion.div>
