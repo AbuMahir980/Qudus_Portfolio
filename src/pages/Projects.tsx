@@ -33,7 +33,7 @@ const Projects: React.FC = () => {
                         <Link
                             to="/"
                             className={cn(
-                                "flex items-center gap-2 text-[10px] md:text-sm font-bold uppercase tracking-[0.2em] transition-all group",
+                                "flex items-center gap-2 text-[8px] md:text-sm font-bold uppercase tracking-[0.2em] transition-all group",
                                 theme === 'dark' ? "text-zinc-500 hover:text-cyan-500" : "text-zinc-400 hover:text-cyan-600"
                             )}
                         >
@@ -44,7 +44,7 @@ const Projects: React.FC = () => {
                         <Link
                             to="/contact"
                             className={cn(
-                                "flex items-center gap-2 text-[10px] md:text-sm font-bold uppercase tracking-[0.2em] transition-all group text-right",
+                                "flex items-center gap-2 text-[8px] md:text-sm font-bold uppercase tracking-[0.2em] transition-all group text-right",
                                 theme === 'dark' ? "text-zinc-500 hover:text-cyan-500" : "text-zinc-400 hover:text-cyan-600"
                             )}
                         >
@@ -96,6 +96,22 @@ const Projects: React.FC = () => {
             <PerformanceRefactorSection />
             <ConversionEngineSection />
             <SaaSIntegrationSection />
+
+            {/* Page Footer: Back to Home */}
+            <SectionContainer id="projects-footer" className="pb-24">
+                <div className="pt-12 border-t border-zinc-900/30 flex justify-center">
+                    <Link
+                        to="/"
+                        className={cn(
+                            "flex items-center gap-3 text-[9px] md:text-sm font-black uppercase tracking-[0.3em] transition-all group",
+                            theme === 'dark' ? "text-zinc-500 hover:text-cyan-500" : "text-zinc-400 hover:text-cyan-600"
+                        )}
+                    >
+                        <ArrowLeft size={14} className="group-hover:-translate-x-2 transition-transform text-cyan-500" />
+                        <span>127.0.0.1 No Place like Home</span>
+                    </Link>
+                </div>
+            </SectionContainer>
         </div>
     );
 };
