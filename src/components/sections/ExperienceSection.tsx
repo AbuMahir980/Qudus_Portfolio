@@ -8,16 +8,28 @@ import SectionContainer from '../layout/SectionContainer';
 
 const experiences = [
     {
-        role: "Senior Frontend Engineer",
-        company: "Global Tech Solutions",
-        period: "2021 — Present",
-        description: "Leading frontend architecture for enterprise-scale React applications. Focused on performance optimization and scalable design patterns."
+        role: "Phase 03: The Lead Architect (Current)",
+        company: "PowerHop (via VN Technologies ApS)",
+        period: "Jan 2025 — Present",
+        description: "I’m currently leading the frontend for PowerHop’s launch into Nigeria's energy sector. It’s been an intense journey-we spent 9 months building under the name PlugNPower before a total rebrand forced us to pivot. During that shift, I was tasked with building a custom telemetry dashboard from scratch to prove I could handle complex data like charging, usage metrics, grid availability analysis and station metrics. That personal deep-dive is now the foundation for the official Ops dashboard I’m currently architecting."
     },
     {
-        role: "Full Stack Developer",
-        company: "Innovate Digital",
-        period: "2019 — 2021",
-        description: "Developed and maintained multiple client projects using React, Node.js, and PostgreSQL. Implemented automated testing and CI/CD pipelines."
+        role: "Phase 02: The Systems Specialist",
+        company: "STEMMETS ",
+        period: "Nov 2024 — Jan 2025",
+        description: "I was brought in to engineer the customer-facing e-learning platform from the ground up. I balanced a sleek, responsive UI with a heavy focus on the 'Logic Layer'-securing OTP authentication and optimizing data flows with Redux. By implementing strict form validation and clean state management, I reduced sign-up errors by 40% and ensured that complex parent-child account structures felt completely effortless. My goal was to make sure the interface looked premium while the background logic handled the heavy lifting without a hitch."
+    },
+    {
+        role: "Phase 01: The Freelance Refactor",
+        company: "Arc Kitchen & Remvy Driving School",
+        period: "2024",
+        description: "This was my transition into professional freelancing. I delivered high-conversion landing experiences that focused on immediate results, like integrating WhatsApp ordering to streamline customer leads. Later, I performed a total system refactor to bring them up to enterprise standards. I migrated both projects to TypeScript for better stability and implemented a standardized, scalable folder architecture. By adding Framer Motion and Shadcn UI, I boosted the performance and 'feel' of the sites."
+    },
+    {
+        role: "Phase 00: Initializing the System",
+        company: "Zulfah Group & Zulfah Foundation",
+        period: "2023 — 2025",
+        description: "The foundation of my engineering journey. I started as a Full-Stack intern at Zulfah Group, learning the mechanics of SaaS platforms and API logic. I later stepped up as the Technical Lead for the Zulfah Foundation, where I bridged the gap between human impact and digital presence."
     }
 ];
 
@@ -120,6 +132,60 @@ const ExperienceSection: React.FC = () => {
                                 </motion.div>
                             ))}
                         </div>
+
+                        {/* Technical Arsenal Sub-section */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="mt-24 md:mt-32"
+                        >
+                            <h3 className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-cyan-500 mb-10 md:mb-16">
+                                The Technical Arsenal
+                            </h3>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-8">
+                                {[
+                                    {
+                                        category: "Visual Architecture",
+                                        skills: ["React", "Tailwind CSS", "Framer Motion", "Shadcn UI", "Chakra UI", "Ant Design"]
+                                    },
+                                    {
+                                        category: "System Logic",
+                                        skills: ["TypeScript", "Redux Toolkit", "Node.js", "REST APIs", "MongoDB/MySQL"]
+                                    },
+                                    {
+                                        category: "Integrity & Quality",
+                                        skills: ["TDD", "Git", "Postman"]
+                                    }
+                                ].map((group, idx) => (
+                                    <div key={idx} className="space-y-6">
+                                        <h4 className={cn(
+                                            "text-sm font-bold uppercase tracking-wider",
+                                            theme === 'dark' ? "text-zinc-200" : "text-zinc-800"
+                                        )}>
+                                            {group.category}
+                                        </h4>
+                                        <div className="flex flex-wrap gap-2">
+                                            {group.skills.map((skill, sIdx) => (
+                                                <span
+                                                    key={sIdx}
+                                                    className={cn(
+                                                        "text-[10px] md:text-xs font-medium px-3 py-1 border rounded-full transition-colors duration-300",
+                                                        theme === 'dark'
+                                                            ? "border-zinc-800 text-zinc-500 hover:border-cyan-500/50 hover:text-cyan-400"
+                                                            : "border-zinc-200 text-zinc-500 hover:border-cyan-500/50 hover:text-cyan-600"
+                                                    )}
+                                                >
+                                                    {skill}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>
