@@ -33,9 +33,9 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
                         />
 
                         {/* Blueprint Overlay/Trigger */}
-                        <div className="mt-8">
+                        {/* <div className="mt-8">
                             <BlueprintTerminal blueprint={project.blueprint} className="opacity-80 hover:opacity-100 transition-opacity" />
-                        </div>
+                        </div> */}
                     </div>
                 </motion.div>
 

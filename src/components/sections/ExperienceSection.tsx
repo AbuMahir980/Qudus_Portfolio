@@ -33,12 +33,30 @@ const experiences = [
     }
 ];
 
+const skillGroups = [
+    {
+        category: "Visual Architecture",
+        skills: ["React", "Tailwind CSS", "Framer Motion", "Shadcn UI", "Chakra UI", "Ant Design"]
+    },
+    {
+        category: "System Logic",
+        skills: ["TypeScript", "Redux Toolkit", "Node.js", "REST APIs", "MongoDB/MySQL"]
+    },
+    {
+        category: "Integrity & Quality",
+        skills: ["TDD", "Git", "Postman"]
+    }
+];
+
 const ExperienceSection: React.FC = () => {
     const { theme } = usePage();
+    const [activePhase, setActivePhase] = React.useState(0);
+    const [activeSkillTab, setActiveSkillTab] = React.useState("Visual Architecture");
 
-    const cardVariants: Variants = {
-        initial: { opacity: 0, x: -20 },
-        animate: { opacity: 1, x: 0 }
+    const contentVariants: Variants = {
+        initial: { opacity: 0, x: 20 },
+        animate: { opacity: 1, x: 0 },
+        exit: { opacity: 0, x: -20 }
     };
 
     return (
@@ -92,48 +110,67 @@ const ExperienceSection: React.FC = () => {
                         </motion.div>
                     </div>
 
-                    {/* Right Side: Timeline */}
+                    {/* Right Side: Tabbed Interface */}
                     <div className="md:col-span-8 md:pt-16 lg:pt-24">
-                        <div className="space-y-12">
-                            {experiences.map((exp, i) => (
-                                <motion.div
+                        {/* Tabs */}
+                        <div className="flex gap-8 md:gap-12 border-b border-zinc-900/10 pb-4 mb-12">
+                            {experiences.map((_, i) => (
+                                <button
                                     key={i}
-                                    variants={cardVariants}
-                                    initial="initial"
-                                    whileInView="animate"
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.1 }}
-                                    className="group relative border-l border-cyan-500/20 pl-8 md:pl-12 py-2"
+                                    onClick={() => setActivePhase(i)}
+                                    className={cn(
+                                        "relative group flex items-center gap-2 text-xs md:text-sm font-black tracking-widest uppercase transition-colors",
+                                        activePhase === i
+                                            ? "text-cyan-500"
+                                            : theme === 'dark' ? "text-zinc-500 hover:text-zinc-300" : "text-zinc-400 hover:text-zinc-600"
+                                    )}
                                 >
-                                    <div className="absolute left-[-5px] top-4 w-[9px] h-[9px] rounded-full bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.5)] group-hover:scale-150 transition-transform duration-500" />
-
-                                    <div className="space-y-4">
-                                        <span className="text-xs font-black uppercase tracking-[0.2em] text-cyan-500/50">
-                                            {exp.period}
-                                        </span>
-                                        <div>
-                                            <h3 className={cn(
-                                                "text-2xl md:text-3xl font-bold tracking-tight mb-2",
-                                                theme === 'dark' ? "text-white" : "text-zinc-950"
-                                            )}>
-                                                {exp.role}
-                                            </h3>
-                                            <p className="text-sm font-semibold text-zinc-500 uppercase tracking-widest">
-                                                {exp.company}
-                                            </p>
-                                        </div>
-                                        <p className={cn(
-                                            "text-lg leading-relaxed max-w-2xl",
-                                            theme === 'dark' ? "text-zinc-400" : "text-zinc-600"
-                                        )}>
-                                            {exp.description}
-                                        </p>
-                                    </div>
-                                </motion.div>
+                                    <span className="opacity-50 text-[10px]">PH</span>
+                                    <span>0{3 - i}</span>
+                                    {activePhase === i && (
+                                        <motion.div
+                                            layoutId="activeTab"
+                                            className="absolute -bottom-[17px] left-0 right-0 h-[2px] bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.5)]"
+                                        />
+                                    )}
+                                </button>
                             ))}
                         </div>
 
-                        {/* Technical Arsenal Sub-section */}
+                        {/* Phase Content */}
+                        <div className="min-h-[300px] relative">
+                            <motion.div
+                                key={activePhase}
+                                variants={contentVariants}
+                                initial="initial"
+                                animate="animate"
+                                transition={{ duration: 0.5, ease: "easeOut" }}
+                                className="space-y-6"
+                            >
+                                <div className="space-y-2">
+                                    <span className="text-xs font-black uppercase tracking-[0.2em] text-cyan-500/50">
+                                        {experiences[activePhase].period}
+                                    </span>
+                                    <h3 className={cn(
+                                        "text-2xl md:text-4xl font-bold tracking-tight",
+                                        theme === 'dark' ? "text-white" : "text-zinc-950"
+                                    )}>
+                                        {experiences[activePhase].role.split(': ')[1]}
+                                    </h3>
+                                    <p className="text-sm font-semibold text-zinc-500 uppercase tracking-widest">
+                                        {experiences[activePhase].company}
+                                    </p>
+                                </div>
+
+                                <p className={cn(
+                                    "text-lg leading-relaxed max-w-2xl text-justify",
+                                    theme === 'dark' ? "text-zinc-400" : "text-zinc-600"
+                                )}>
+                                    {experiences[activePhase].description}
+                                </p>
+                            </motion.div>
+                        </div>
+
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -141,49 +178,63 @@ const ExperienceSection: React.FC = () => {
                             transition={{ duration: 0.8, delay: 0.2 }}
                             className="mt-24 md:mt-32"
                         >
-                            <h3 className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-cyan-500 mb-10 md:mb-16">
+                            <h3 className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-cyan-500 mb-8">
                                 The Technical Arsenal
                             </h3>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-8">
-                                {[
-                                    {
-                                        category: "Visual Architecture",
-                                        skills: ["React", "Tailwind CSS", "Framer Motion", "Shadcn UI", "Chakra UI", "Ant Design"]
-                                    },
-                                    {
-                                        category: "System Logic",
-                                        skills: ["TypeScript", "Redux Toolkit", "Node.js", "REST APIs", "MongoDB/MySQL"]
-                                    },
-                                    {
-                                        category: "Integrity & Quality",
-                                        skills: ["TDD", "Git", "Postman"]
-                                    }
-                                ].map((group, idx) => (
-                                    <div key={idx} className="space-y-6">
-                                        <h4 className={cn(
-                                            "text-sm font-bold uppercase tracking-wider",
-                                            theme === 'dark' ? "text-zinc-200" : "text-zinc-800"
-                                        )}>
-                                            {group.category}
-                                        </h4>
-                                        <div className="flex flex-wrap gap-2">
-                                            {group.skills.map((skill, sIdx) => (
-                                                <span
-                                                    key={sIdx}
-                                                    className={cn(
-                                                        "text-[10px] md:text-xs font-medium px-3 py-1 border rounded-full transition-colors duration-300",
-                                                        theme === 'dark'
-                                                            ? "border-zinc-800 text-zinc-500 hover:border-cyan-500/50 hover:text-cyan-400"
-                                                            : "border-zinc-200 text-zinc-500 hover:border-cyan-500/50 hover:text-cyan-600"
-                                                    )}
-                                                >
-                                                    {skill}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                ))}
+                            <div className="flex flex-col md:flex-row gap-8 md:gap-16">
+                                {/* Category Sidebar/Tabs */}
+                                <div className="flex md:flex-col gap-4 md:gap-6 border-b md:border-b-0 md:border-r border-zinc-900/10 pb-4 md:pb-0 md:pr-8 md:min-w-[200px]">
+                                    {[
+                                        "Visual Architecture",
+                                        "System Logic",
+                                        "Integrity & Quality"
+                                    ].map((cat) => (
+                                        <button
+                                            key={cat}
+                                            onClick={() => setActiveSkillTab(cat)}
+                                            className={cn(
+                                                "relative text-left text-[10px] md:text-xs font-black uppercase tracking-widest transition-colors",
+                                                activeSkillTab === cat
+                                                    ? "text-cyan-500"
+                                                    : theme === 'dark' ? "text-zinc-500 hover:text-zinc-300" : "text-zinc-400 hover:text-zinc-600"
+                                            )}
+                                        >
+                                            {cat}
+                                            {activeSkillTab === cat && (
+                                                <motion.div
+                                                    layoutId="activeSkillTab"
+                                                    className="hidden md:block absolute -right-[33px] top-1/2 -translate-y-1/2 w-[2px] h-full bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.5)]"
+                                                />
+                                            )}
+                                        </button>
+                                    ))}
+                                </div>
+
+                                {/* Skill Content */}
+                                <div className="flex-1 min-h-[100px]">
+                                    <motion.div
+                                        key={activeSkillTab}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.4 }}
+                                        className="flex flex-wrap gap-3"
+                                    >
+                                        {skillGroups.find(g => g.category === activeSkillTab)?.skills.map((skill, sIdx) => (
+                                            <span
+                                                key={sIdx}
+                                                className={cn(
+                                                    "text-[10px] md:text-xs font-medium px-4 py-2 border rounded-full transition-all duration-300",
+                                                    theme === 'dark'
+                                                        ? "border-zinc-800 text-zinc-500 hover:border-cyan-500/50 hover:text-cyan-400 bg-zinc-900/50"
+                                                        : "border-zinc-200 text-zinc-500 hover:border-cyan-500/50 hover:text-cyan-600 bg-zinc-50/50"
+                                                )}
+                                            >
+                                                {skill}
+                                            </span>
+                                        ))}
+                                    </motion.div>
+                                </div>
                             </div>
                         </motion.div>
                     </div>
