@@ -21,11 +21,11 @@ body {
 
 .dark body {
   background-color: var(--dark-bg);
-  @apply text-zinc-100;
+  @apply text-gray-100;
 }
 
 .light body {
-  background-color: #ffffff;
+  background-color: #ffffffcb;
   color: #1a1a1a;
 }
 

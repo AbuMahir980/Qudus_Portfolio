@@ -101,7 +101,7 @@ const AboutSection: React.FC = () => {
                             <div className="space-y-8 md:space-y-6">
                                 <div className={cn(
                                     "text-lg md:text-2xl lg:text-3xl font-medium leading-relaxed md:leading-snug min-h-[1em]",
-                                    theme === 'dark' ? "text-zinc-300" : "text-zinc-700"
+                                    theme === 'dark' ? "text-gray-300" : "text-gray-700"
                                 )}>
                                     "{quoteTyped.split(',').map((part, i) => (
                                         <React.Fragment key={i}>
@@ -128,7 +128,7 @@ const AboutSection: React.FC = () => {
                                     variants={containerVariants}
                                     className={cn(
                                         "text-base md:text-lg leading-relaxed max-w-3xl space-y-6",
-                                        theme === 'dark' ? "text-zinc-500" : "text-zinc-600"
+                                        theme === 'dark' ? "text-gray-500" : "text-gray-600"
                                     )}
                                 >
                                     <motion.p variants={itemVariants}>
@@ -166,11 +166,11 @@ const AboutSection: React.FC = () => {
                                                 <div>
                                                     <h4 className={cn(
                                                         "text-base md:text-xl font-bold mb-1 group-hover:text-[#A9792B] transition-colors",
-                                                        theme === 'dark' ? "text-zinc-200" : "text-[#364153]"
+                                                        theme === 'dark' ? "text-gray-200" : "text-[#364153]"
                                                     )}>
                                                         {item.degree}
                                                     </h4>
-                                                    <p className="text-[10px] md:text-sm font-medium text-zinc-500 uppercase tracking-wider">
+                                                    <p className="text-[10px] md:text-sm font-medium text-gray-500 uppercase tracking-wider">
                                                         {item.institution}
                                                     </p>
                                                 </div>

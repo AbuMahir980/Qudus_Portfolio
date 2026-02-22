@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
                         variants={fadeIn}
                         className={cn(
                             'text-xl md:text-2xl lg:text-3xl font-bold tracking-tight',
-                            theme === 'dark' ? 'text-zinc-400' : 'text-[#364153]'
+                            theme === 'dark' ? 'text-gray-400' : 'text-[#364153]'
                         )}
                     >
                         {phrases[index].substring(0, subIndex)}
@@ -78,7 +78,7 @@ const Hero: React.FC = () => {
                         variants={fadeIn}
                         className={cn(
                             'text-sm md:text-base font-medium tracking-widest uppercase',
-                            theme === 'dark' ? 'text-zinc-400' : 'text-[#364153]'
+                            theme === 'dark' ? 'text-gray-400' : 'text-[#364153]'
                         )}
                     >
                         Frontend Architecture. Data Integrity. Human-Centric Design.

@@ -56,7 +56,7 @@ const ContactSection: React.FC = () => {
                         to="/"
                         className={cn(
                             "flex items-center gap-3 text-[9px] md:text-xs font-black uppercase tracking-[0.3em] transition-all group",
-                            theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-400 hover:text-[#364153]"
+                            theme === 'dark' ? "text-gray-500 hover:text-[#A9792B]" : "text-gray-400 hover:text-[#364153]"
                         )}
                     >
                         <ArrowLeft size={14} className="group-hover:-translate-x-2 transition-transform text-[#A9792B]" />

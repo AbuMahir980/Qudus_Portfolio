@@ -54,7 +54,7 @@ const NavBar: React.FC = () => {
                                 'text-sm font-medium transition-colors hover:text-[#A9792B]',
                                 location.pathname === item.href
                                     ? 'text-[#A9792B]'
-                                    : theme === 'dark' ? 'text-zinc-400' : 'text-zinc-700'
+                                    : theme === 'dark' ? 'text-gray-400' : 'text-gray-700'
                             )}
                         >
                             {item.name}
@@ -65,7 +65,7 @@ const NavBar: React.FC = () => {
                         onClick={toggleTheme}
                         className={cn(
                             'p-2 rounded-full transition-colors',
-                            theme === 'dark' ? 'hover:bg-zinc-800 text-zinc-400' : 'hover:bg-zinc-100 text-zinc-600'
+                            theme === 'dark' ? 'hover:bg-zinc-800 text-gray-400' : 'hover:bg-zinc-100 text-gray-600'
                         )}
                     >
                         {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
@@ -78,7 +78,7 @@ const NavBar: React.FC = () => {
                         onClick={toggleTheme}
                         className={cn(
                             'p-2 rounded-full transition-colors',
-                            theme === 'dark' ? 'text-zinc-400' : 'text-zinc-600'
+                            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
                         )}
                     >
                         {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
@@ -87,7 +87,7 @@ const NavBar: React.FC = () => {
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         className={cn(
                             'p-2 rounded-full transition-colors z-[210]',
-                            theme === 'dark' ? 'text-zinc-400' : 'text-zinc-600',
+                            theme === 'dark' ? 'text-gray-400' : 'text-gray-600',
                             isMenuOpen && "text-[#A9792B]"
                         )}
                     >
@@ -128,7 +128,7 @@ const NavBar: React.FC = () => {
                                     onClick={() => setIsMenuOpen(false)}
                                     className={cn(
                                         "text-5xl font-black uppercase tracking-tighter hover:text-[#A9792B] transition-colors",
-                                        location.pathname === item.href ? "text-[#A9792B]" : (theme === 'dark' ? "text-zinc-400" : "text-zinc-700")
+                                        location.pathname === item.href ? "text-[#A9792B]" : (theme === 'dark' ? "text-gray-400" : "text-gray-700")
                                     )}
                                 >
                                     {item.name}

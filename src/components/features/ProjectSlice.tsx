@@ -48,20 +48,21 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
     };
 
     // Theme-aware tokens
-    const cardBg = theme === 'dark' ? 'bg-[#1E2939] shadow-2xl' : 'bg-white shadow-md border border-zinc-200';
+    const cardBg = theme === 'dark' ? 'bg-[#1E2939] drop-shadow-2xl' : 'bg-white drop-shadow-lg';
     const headingColor = theme === 'dark' ? 'text-white' : 'text-[#364153]';
-    const bodyColor = theme === 'dark' ? 'text-zinc-300' : 'text-zinc-600';
-    const tabBorder = theme === 'dark' ? 'border-zinc-700' : 'border-zinc-200';
-    const tagBg = theme === 'dark' ? 'bg-[#101828] text-zinc-300 border border-zinc-700' : 'bg-zinc-100 text-[#364153] border border-zinc-200';
+    const bodyColor = theme === 'dark' ? 'text-gray-300' : 'text-gray-600';
+    const btnColor = theme === 'dark' ? 'text-white hover:text-[#A9792B] border-white hover:border-[#A9792B]' : 'text-[#364153] border-[#364153] hover:border-[#A9792B] hover:text-[#A9792B]';
+    const tagBg = theme === 'dark' ? 'bg-[#101828] text-gray-300 border border-zinc-700' : 'bg-zinc-100 text-[#364153] border border-zinc-200';
+    const imageBg = theme === 'dark' ? 'bg-gray-300' : 'bg-[#364153]';
 
     return (
         <SectionContainer alternate={false} className="py-4 md:py-6">
             <div className={cn("rounded-2xl overflow-hidden transition-all duration-500", cardBg)}>
-                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0 items-center ${reverse ? 'lg:direction-rtl' : ''}`}>
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0 items-center ${reverse ? 'lg:direction-rtl pr-4' : 'pl-4'}`}>
                     {/* Visual Content: Image Carousel */}
                     <motion.div
                         variants={reverse ? slideInRight : slideInLeft}
-                        className={cn("relative aspect-[16/10] overflow-hidden", reverse ? 'lg:order-2' : '')}
+                        className={cn("relative aspect-[16/10] overflow-hidden rounded-md", reverse ? 'lg:order-2' : '')}
                     >
                         <div className="absolute top-4 left-4 z-30">
                             <div className="px-3 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center gap-2">
@@ -101,7 +102,7 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
                                     <LazyImage
                                         src={project.images[currentImageIndex]}
                                         alt={`${project.title} - ${currentImageIndex + 1}`}
-                                        className="object-contain w-full h-full p-6 bg-zinc-900/5"
+                                        className={cn(imageBg, "object-contain w-full h-full p-4 rounded-md")}
                                     />
                                 </motion.div>
                             </motion.div>
@@ -132,7 +133,7 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
                     <div className={cn("p-8 flex flex-col h-full", reverse ? 'lg:order-1' : '')}>
 
                         {/* Category badge */}
-                        <div className="inline-block px-3 py-1 rounded-full bg-[#A9792B]/10 text-[#A9792B] text-[10px] uppercase tracking-[0.2em] font-bold mb-5 w-fit">
+                        <div className="inline-block px-3 py-1 rounded-full bg-[#364153] text-gray-300 text-[10px] uppercase tracking-[0.2em] font-bold mb-5 w-fit">
                             {project.category === 'production' ? 'Production Lab' : 'The Sandbox'} / 0{project.id === 'powerhop' ? 1 : project.id === 'stem-mets' ? 2 : project.id === 'arc-kitchen' ? 3 : project.id === 'remsy' ? 4 : 5}
                         </div>
 
@@ -143,7 +144,7 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
 
                         {/* Tabs */}
                         <div className="mb-5">
-                            <div className={cn("flex gap-6 border-b mb-5", tabBorder)}>
+                            <div className={cn("flex gap-6 mb-5")}>
                                 {(['overview', 'challenge', 'solution'] as const).map((tab) => (
                                     <button
                                         key={tab}
@@ -152,7 +153,7 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
                                             "pb-3 text-[10px] uppercase tracking-widest transition-all relative font-bold",
                                             activeTab === tab
                                                 ? 'text-[#A9792B]'
-                                                : theme === 'dark' ? 'text-zinc-500 hover:text-zinc-200' : 'text-zinc-400 hover:text-[#364153]'
+                                                : theme === 'dark' ? 'text-gray-300 hover:text-[#A9792B]' : 'text-gray-400 hover:text-[#A9792B]'
                                         )}
                                     >
                                         {tab}
@@ -195,7 +196,7 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
                                     href={project.live}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="group flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[#005F5A] hover:text-[#005F5A]/70 transition-colors border border-[#005F5A]/40 hover:border-[#005F5A] rounded-full px-4 py-2"
+                                    className={cn("group flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] transition-colors border rounded-full px-4 py-2", btnColor)}
                                 >
                                     <ExternalLink size={12} />
                                     <span>Launch Site</span>
@@ -209,7 +210,7 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
                                     rel="noopener noreferrer"
                                     className={cn(
                                         "flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] transition-colors",
-                                        theme === 'dark' ? "text-zinc-400 hover:text-[#A9792B]" : "text-zinc-500 hover:text-[#A9792B]"
+                                        theme === 'dark' ? "text-gray-400 hover:text-[#A9792B]" : "text-gray-500 hover:text-[#A9792B]"
                                     )}
                                 >
                                     <Github size={12} />

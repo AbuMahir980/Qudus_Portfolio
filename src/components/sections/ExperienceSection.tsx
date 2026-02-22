@@ -61,8 +61,8 @@ const ExperienceSection: React.FC = () => {
     };
 
     const borderColor = theme === 'dark' ? "border-white" : "border-[#364153]";
-    const mutedText = theme === 'dark' ? "text-zinc-500" : "text-zinc-400";
-    const bodyText = theme === 'dark' ? "text-zinc-400" : "text-zinc-600";
+    const mutedText = theme === 'dark' ? "text-gray-500" : "text-gray-400";
+    const bodyText = theme === 'dark' ? "text-gray-400" : "text-gray-600";
     const headingText = theme === 'dark' ? "text-white" : "text-[#364153]";
 
     return (
@@ -97,7 +97,7 @@ const ExperienceSection: React.FC = () => {
                                         "relative group flex items-center gap-2 text-xs font-black tracking-widest uppercase transition-colors",
                                         activePhase === i
                                             ? "text-[#A9792B]"
-                                            : theme === 'dark' ? "text-zinc-300 hover:text-white" : "text-zinc-400 hover:text-[#364153]"
+                                            : theme === 'dark' ? "text-gray-300 hover:text-white" : "text-gray-400 hover:text-[#364153]"
                                     )}
                                 >
                                     <span className="opacity-50 text-[10px]">XP</span>
@@ -175,7 +175,7 @@ const ExperienceSection: React.FC = () => {
                                                 "relative text-left text-[10px] md:text-xs font-black uppercase tracking-widest transition-colors",
                                                 activeSkillTab === cat
                                                     ? "text-[#A9792B]"
-                                                    : theme === 'dark' ? "text-zinc-500 hover:text-zinc-300" : "text-zinc-400 hover:text-[#364153]"
+                                                    : theme === 'dark' ? "text-gray-500 hover:text-gray-300" : "text-gray-500 hover:text-[#364153]"
                                             )}
                                         >
                                             {cat}

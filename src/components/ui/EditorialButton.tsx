@@ -25,7 +25,7 @@ const EditorialButton: React.FC<EditorialButtonProps> = ({
 
     const solidStyles = "bg-[#005F5A] text-white hover:bg-[#005F5A]/90 shadow-lg shadow-black/10 active:scale-95";
     const outlineStyles = theme === 'dark'
-        ? "border border-zinc-600 text-zinc-300 hover:border-[#A9792B] hover:text-[#A9792B] active:scale-95"
+        ? "border border-zinc-600 text-gray-300 hover:border-[#A9792B] hover:text-[#A9792B] active:scale-95"
         : "border border-[#364153] text-[#364153] hover:border-[#A9792B] hover:text-[#A9792B] active:scale-95";
 
     const variants = {

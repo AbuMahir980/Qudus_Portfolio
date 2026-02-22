@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
                             to="/"
                             className={cn(
                                 "flex items-center gap-3 text-xs font-black uppercase tracking-[0.3em] transition-all group",
-                                theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-400 hover:text-[#364153]"
+                                theme === 'dark' ? "text-gray-500 hover:text-[#A9792B]" : "text-gray-400 hover:text-[#364153]"
                             )}
                         >
                             <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform text-[#A9792B]" />
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
                 <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8">
                     <div className={cn(
                         "text-xs font-medium",
-                        theme === 'dark' ? "text-zinc-500" : "text-zinc-600"
+                        theme === 'dark' ? "text-gray-500" : "text-gray-600"
                     )}>
                         © {new Date().getFullYear()} Qudus Lawal. All rights reserved.
                     </div>
@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
                             rel="noopener noreferrer"
                             className={cn(
                                 "transition-colors",
-                                theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-600 hover:text-[#A9792B]"
+                                theme === 'dark' ? "text-gray-500 hover:text-[#A9792B]" : "text-gray-600 hover:text-[#A9792B]"
                             )}
                         >
                             LinkedIn
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
                             rel="noopener noreferrer"
                             className={cn(
                                 "transition-colors",
-                                theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-600 hover:text-[#A9792B]"
+                                theme === 'dark' ? "text-gray-500 hover:text-[#A9792B]" : "text-gray-600 hover:text-[#A9792B]"
                             )}
                         >
                             GitHub
@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
                             rel="noopener noreferrer"
                             className={cn(
                                 "transition-colors",
-                                theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-600 hover:text-[#A9792B]"
+                                theme === 'dark' ? "text-gray-500 hover:text-[#A9792B]" : "text-gray-600 hover:text-[#A9792B]"
                             )}
                         >
                             X
