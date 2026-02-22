@@ -8,6 +8,11 @@ export interface ProjectSpecs {
   challenge: string;
   solution: string;
 }
+export interface ProjectSpecs2 {
+  title: string;
+  concept: string;
+  highlights: string;
+}
 
 export interface ProjectBlueprint {
   title: string;
@@ -24,6 +29,20 @@ export interface Project {
   description: string;
   images: string[];
   specs: ProjectSpecs;
+  tools: TechStack[];
+  github?: string;
+  live?: string;
+  isFeatured?: boolean;
+}
+
+export interface Project2 {
+  id: string;
+  title: string;
+  category: 'production' | 'sandbox';
+  status: string;
+  description: string;
+  images: string[];
+  specs2: ProjectSpecs2;
   tools: TechStack[];
   github?: string;
   live?: string;

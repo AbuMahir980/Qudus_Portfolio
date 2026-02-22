@@ -8,7 +8,8 @@ import SectionContainer from '../components/layout/SectionContainer';
 import ProjectSlice from '../components/features/ProjectSlice';
 import SEOHead from '../lib/SEOHead';
 import { seoConfig } from '../data/seo';
-import { projects } from '../data';
+import { projects, projects2 } from '../data';
+import ProjectSlice2 from '../components/features/ProjectSlice2';
 
 const Projects: React.FC = () => {
     const { theme } = usePage();
@@ -16,7 +17,7 @@ const Projects: React.FC = () => {
     const borderColor = theme === 'dark' ? "border-white" : "border-[#364153]";
 
     const productionProjects = projects.filter(p => p.category === 'production');
-    const sandboxProjects = projects.filter(p => p.category === 'sandbox');
+    const sandboxProjects = projects2.filter(p => p.category === 'sandbox');
 
     return (
         <div className="pt-4 overflow-x-hidden">
@@ -108,7 +109,7 @@ const Projects: React.FC = () => {
 
             <div className="space-y-0 pb-12">
                 {sandboxProjects.map((project, index) => (
-                    <ProjectSlice
+                    <ProjectSlice2
                         key={project.id}
                         project={project}
                         reverse={index % 2 === 0}

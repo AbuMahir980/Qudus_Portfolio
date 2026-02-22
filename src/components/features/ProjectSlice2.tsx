@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionContainer from '../layout/SectionContainer';
 import LazyImage from '../ui/LazyImage';
-import { Project } from '../../types';
+import { Project2 } from '../../types';
 import { fadeIn, slideInLeft, slideInRight } from '../../lib/animations';
 import { ChevronLeft, ChevronRight, ExternalLink, Github } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { usePage } from '../../context/PageContext';
 
 interface ProjectSliceProps {
-    project: Project;
+    project: Project2;
     reverse?: boolean;
 }
 
-const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
+const ProjectSlice2: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
     const { theme } = usePage();
-    const [activeTab, setActiveTab] = useState<'overview' | 'challenge' | 'solution'>('overview');
+    const [newActiveTab, setNewActiveTab] = useState<'title' | 'concept' | 'highlights'>('title');
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
     const nextImage = () => {
@@ -74,7 +74,7 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
                             </div>
                         </div>
 
-                        {project.category === 'production' && (
+                        {/* {project.category === 'production' && (
                             <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
                                 <motion.div
                                     initial={{ scale: 0.8, opacity: 0 }}
@@ -84,7 +84,7 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
                                     Commercial
                                 </motion.div>
                             </div>
-                        )}
+                        )} */}
 
                         <AnimatePresence mode="wait">
                             <motion.div
@@ -115,13 +115,13 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
                                 <div className="absolute inset-0 flex items-center justify-between px-4 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity z-20 pointer-events-none">
                                     <button
                                         onClick={prevImage}
-                                        className="p-2 rounded-full bg-black/60 text-white hover:bg-[#A9792B]/70 transition-colors pointer-events-auto"
+                                        className="p-2 rounded-full bg-black/60 text-black hover:bg-[#A9792B]/70 transition-colors pointer-events-auto"
                                     >
                                         <ChevronLeft size={20} />
                                     </button>
                                     <button
                                         onClick={nextImage}
-                                        className="p-2 rounded-full bg-black/60 text-white hover:bg-[#A9792B]/70 transition-colors pointer-events-auto"
+                                        className="p-2 rounded-full bg-black/60 text-black hover:bg-[#A9792B]/70 transition-colors pointer-events-auto"
                                     >
                                         <ChevronRight size={20} />
                                     </button>
@@ -135,7 +135,7 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
 
                         {/* Category badge */}
                         <div className="inline-block px-3 py-1 rounded-full bg-[#364153] text-gray-300 text-[10px] uppercase tracking-[0.2em] font-bold mb-5 w-fit">
-                            {project.category === 'production' && 'Production Lab'} / 0{project.id === 'powerhop' ? 1 : project.id === 'stem-mets' ? 2 : project.id === 'arc-kitchen' ? 3 : project.id === 'remsy'}
+                            {project.category === 'sandbox' && 'Sandbox Lab'} / 0{project.id === 'wellness' ? 1 : project.id === 'portfolio' ? 2 : 3 }
                         </div>
 
                         {/* Project Title */}
@@ -146,19 +146,19 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
                         {/* Tabs */}
                         <div className="mb-5">
                             <div className={cn("flex gap-6 mb-5")}>
-                                {(['overview', 'challenge', 'solution'] as const).map((tab) => (
+                                {(['title', 'concept', 'highlights'] as const).map((newTab) => (
                                     <button
-                                        key={tab}
-                                        onClick={() => setActiveTab(tab)}
+                                        key={newTab}
+                                        onClick={() => setNewActiveTab(newTab)}
                                         className={cn(
                                             "pb-3 text-[10px] uppercase tracking-widest transition-all relative font-bold",
-                                            activeTab === tab
+                                            newActiveTab === newTab
                                                 ? 'text-[#A9792B]'
                                                 : theme === 'dark' ? 'text-gray-300 hover:text-[#A9792B]' : 'text-gray-400 hover:text-[#A9792B]'
                                         )}
                                     >
-                                        {tab}
-                                        {activeTab === tab && (
+                                        {newTab}
+                                        {newActiveTab === newTab && (
                                             <motion.div
                                                 layoutId={`${project.id}-activeTab`}
                                                 className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#A9792B]"
@@ -169,12 +169,12 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
                             </div>
 
                             <motion.p
-                                key={activeTab}
+                                key={newActiveTab}
                                 initial={{ opacity: 0, y: 8 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 className={cn("leading-loose text-xs min-h-[90px] whitespace-pre-line", bodyColor)}
                             >
-                                {formatText(project.specs[activeTab])}
+                                {formatText(project.specs2[newActiveTab])}
                             </motion.p>
                         </div>
 
@@ -226,4 +226,4 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
     );
 };
 
-export default ProjectSlice;
+export default ProjectSlice2;
