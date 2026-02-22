@@ -11,13 +11,13 @@ const ContactSection: React.FC = () => {
     const borderColor = theme === 'dark' ? "border-zinc-800" : "border-zinc-200";
 
     return (
-        <SectionContainer id="contact" className={cn("pt-8 md:pt-16 border-t", borderColor)}>
+        <SectionContainer id="contact" className={cn("py-8 md:pt-16")}>
             <div className="flex flex-col items-center text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="max-w-3xl mx-auto space-y-12 mb-24 md:mb-32"
+                    className="max-w-3xl mx-auto space-y-12"
                 >
                     <div className="space-y-4">
                         <span className="text-[#A9792B] font-black text-xl md:text-2xl tracking-tighter uppercase whitespace-nowrap">04 / COLLABORATION</span>

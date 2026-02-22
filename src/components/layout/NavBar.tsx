@@ -29,74 +29,76 @@ const NavBar: React.FC = () => {
     ];
 
     return (
-        <nav
-            className={cn(
-                'fixed top-0 left-0 right-0 z-[100] transition-all duration-300 border-b',
-                isScrolled
-                    ? theme === 'dark'
-                        ? 'bg-[#101828]/90 border-[#ffffff] backdrop-blur-md py-2'
-                        : 'bg-white/95 border-[#364153] backdrop-blur-md py-2'
-                    : 'bg-transparent border-[#364153] py-4'
-            )}
-        >
-            <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
-                <Link to="/" className="text-xl font-black tracking-tighter hover:text-[#A9792B] transition-colors">
-                    QL<span className="text-[#A9792B]">.</span>
-                </Link>
+        <>
+            <nav
+                className={cn(
+                    'fixed top-0 left-0 right-0 z-[100] transition-all duration-300 border-b',
+                    isScrolled
+                        ? theme === 'dark'
+                            ? 'bg-[#101828]/90 border-[#ffffff] backdrop-blur-md py-2'
+                            : 'bg-white/95 border-[#364153] backdrop-blur-md py-2'
+                        : 'bg-transparent border-[#364153] py-4'
+                )}
+            >
+                <div className="relative z-[210] max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+                    <Link to="/" className="text-xl font-black tracking-tighter hover:text-[#A9792B] transition-colors">
+                        QL<span className="text-[#A9792B]">.</span>
+                    </Link>
 
-                {/* Desktop Nav */}
-                <div className="hidden md:flex items-center space-x-8">
-                    {navItems.map((item) => (
-                        <Link
-                            key={item.name}
-                            to={item.href}
+                    {/* Desktop Nav */}
+                    <div className="hidden md:flex items-center space-x-8">
+                        {navItems.map((item) => (
+                            <Link
+                                key={item.name}
+                                to={item.href}
+                                className={cn(
+                                    'text-sm font-medium transition-colors hover:text-[#A9792B]',
+                                    location.pathname === item.href
+                                        ? 'text-[#A9792B]'
+                                        : theme === 'dark' ? 'text-gray-400' : 'text-gray-700'
+                                )}
+                            >
+                                {item.name}
+                            </Link>
+                        ))}
+
+                        <button
+                            onClick={toggleTheme}
                             className={cn(
-                                'text-sm font-medium transition-colors hover:text-[#A9792B]',
-                                location.pathname === item.href
-                                    ? 'text-[#A9792B]'
-                                    : theme === 'dark' ? 'text-gray-400' : 'text-gray-700'
+                                'p-2 rounded-full transition-colors',
+                                theme === 'dark' ? 'hover:bg-zinc-800 text-gray-400' : 'hover:bg-zinc-100 text-gray-600'
                             )}
                         >
-                            {item.name}
-                        </Link>
-                    ))}
+                            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+                        </button>
+                    </div>
 
-                    <button
-                        onClick={toggleTheme}
-                        className={cn(
-                            'p-2 rounded-full transition-colors',
-                            theme === 'dark' ? 'hover:bg-zinc-800 text-gray-400' : 'hover:bg-zinc-100 text-gray-600'
-                        )}
-                    >
-                        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-                    </button>
+                    {/* Mobile Menu Toggle */}
+                    <div className="md:hidden flex items-center space-x-4">
+                        <button
+                            onClick={toggleTheme}
+                            className={cn(
+                                'p-2 rounded-full transition-colors',
+                                theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+                            )}
+                        >
+                            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+                        </button>
+                        <button
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className={cn(
+                                'p-2 rounded-full transition-colors',
+                                theme === 'dark' ? 'text-gray-400' : 'text-gray-600',
+                                isMenuOpen && "text-[#A9792B]"
+                            )}
+                        >
+                            {isMenuOpen ? <X size={28} /> : <Menu size={24} />}
+                        </button>
+                    </div>
                 </div>
+            </nav>
 
-                {/* Mobile Menu Toggle */}
-                <div className="md:hidden flex items-center space-x-4">
-                    <button
-                        onClick={toggleTheme}
-                        className={cn(
-                            'p-2 rounded-full transition-colors',
-                            theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
-                        )}
-                    >
-                        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-                    </button>
-                    <button
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className={cn(
-                            'p-2 rounded-full transition-colors z-[210]',
-                            theme === 'dark' ? 'text-gray-400' : 'text-gray-600',
-                            isMenuOpen && "text-[#A9792B]"
-                        )}
-                    >
-                        {isMenuOpen ? <X size={28} /> : <Menu size={24} />}
-                    </button>
-                </div>
-            </div>
-
-            {/* Mobile Menu Modal */}
+            {/* Mobile Menu Modal — outside nav to avoid stacking context issues */}
             <AnimatePresence>
                 {isMenuOpen && (
                     <motion.div
@@ -105,12 +107,11 @@ const NavBar: React.FC = () => {
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
                         className={cn(
-                            "fixed inset-0 z-[200] flex flex-col items-center justify-center",
+                            "fixed inset-0 z-[150] flex flex-col items-center justify-center",
                             theme === 'dark' ? "bg-[#101828]" : "bg-white"
                         )}
                     >
-
-                        <div className="relative z-10 flex flex-col items-center space-y-8">
+                        <div className="flex flex-col items-center space-y-8">
                             <Link
                                 to="/"
                                 onClick={() => setIsMenuOpen(false)}
@@ -138,7 +139,7 @@ const NavBar: React.FC = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </nav>
+        </>
     );
 };
 

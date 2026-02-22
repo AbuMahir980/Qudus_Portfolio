@@ -5,7 +5,7 @@ import ContactSection from '../components/sections/ContactSection';
 
 const Contact: React.FC = () => {
     return (
-        <div className="pt-4">
+        <div className="min-h-[calc(100vh-80px)] flex flex-col justify-center">
             <SEOHead {...seoConfig.home} title="Contact | Qudus Lawal" />
             <ContactSection />
         </div>
