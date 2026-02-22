@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 :root {
+  --gold: #A9792B;
+  --navy: #364153;
+  --green: #005F5A;
+  --dark-bg: #101828;
+  --dark-card: #1E2939;
   color-scheme: light dark;
 }
 
@@ -15,14 +20,17 @@ body {
 }
 
 .dark body {
-  @apply bg-[#09090b] text-white;
+  background-color: var(--dark-bg);
+  @apply text-zinc-100;
 }
 
 .light body {
-  @apply bg-white text-zinc-950;
+  background-color: #ffffff;
+  color: #1a1a1a;
 }
 
 /* Custom Selection */
 ::selection {
-  @apply bg-cyan-500/30 text-cyan-200;
+  background-color: rgba(169, 121, 43, 0.25);
+  color: inherit;
 }

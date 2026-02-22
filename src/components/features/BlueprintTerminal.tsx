@@ -14,35 +14,34 @@ const BlueprintTerminal: React.FC<BlueprintTerminalProps> = ({ blueprint }) => {
     return (
         <div className={cn(
             'rounded-xl border overflow-hidden font-mono text-sm shadow-2xl',
-            theme === 'dark' ? 'bg-zinc-950 border-zinc-800' : 'bg-zinc-900 border-zinc-700 text-zinc-300'
+            theme === 'dark'
+                ? 'bg-[#101828] border-zinc-700 text-zinc-300'
+                : 'bg-[#364153] border-zinc-600 text-zinc-200'
         )}>
             {/* Terminal Header */}
-            <div className="flex items-center justify-between px-4 py-3 bg-zinc-900/50 border-b border-zinc-800">
+            <div className={cn(
+                "flex items-center justify-between px-4 py-3 border-b",
+                theme === 'dark' ? "bg-[#1E2939] border-zinc-700" : "bg-[#2e3848] border-zinc-600"
+            )}>
                 <div className="flex items-center gap-2">
-                    <Terminal size={14} className="text-cyan-500" />
+                    <Terminal size={14} className="text-[#A9792B]" />
                     <span className="text-zinc-400 font-medium tracking-wide leading-none">{blueprint.title}</span>
                 </div>
                 <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-zinc-600" />
                 </div>
             </div>
 
             {/* Code Area */}
             <div className="p-6 overflow-x-auto">
-                <pre className="selection:bg-cyan-500/30">
-                    <code className={cn(
-                        'block leading-relaxed',
-                        theme === 'dark' ? 'text-cyan-400/90' : 'text-cyan-400'
-                    )}>
+                <pre>
+                    <code className="block leading-relaxed text-[#A9792B]/90">
                         {blueprint.code}
                     </code>
                 </pre>
             </div>
-
-            {/* Low-opacity grid background mentioned in AGENT.md */}
-            <div className="absolute inset-0 pointer-events-none opacity-[0.05] bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px]" />
         </div>
     );
 };

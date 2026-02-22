@@ -9,16 +9,14 @@ const RootLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
     const { theme } = usePage();
 
     return (
-        <div className="relative min-h-screen flex flex-col selection:bg-cyan-500/30 overflow-x-hidden">
+        <div className="relative min-h-screen flex flex-col overflow-x-hidden">
             {/* Background Layer */}
             <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
                 {theme === 'dark' ? (
-                    <div className="absolute inset-0 bg-[#09090b]">
-                        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-cyan-500/10 blur-[120px] rounded-full" />
-                        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-indigo-500/10 blur-[120px] rounded-full" />
-                        <svg className="absolute inset-0 w-full h-full opacity-[0.03] pointer-events-none">
+                    <div className="absolute inset-0 bg-[#101828]">
+                        <svg className="absolute inset-0 w-full h-full opacity-[0.015] pointer-events-none">
                             <filter id="noise">
-                                <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+                                <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch" />
                             </filter>
                             <rect width="100%" height="100%" filter="url(#noise)" />
                         </svg>

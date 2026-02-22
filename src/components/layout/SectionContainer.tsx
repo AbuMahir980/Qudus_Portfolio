@@ -20,8 +20,8 @@ const SectionContainer: React.FC<SectionContainerProps> = ({
         <section
             id={id}
             className={cn(
-                "py-16 overflow-hidden",
-                alternate ? "bg-zinc-900/10" : "bg-transparent",
+                "py-8 overflow-hidden",
+                "bg-transparent",
                 className
             )}
         >

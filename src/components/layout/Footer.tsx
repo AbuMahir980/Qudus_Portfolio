@@ -8,11 +8,13 @@ const Footer: React.FC = () => {
     const { theme } = usePage();
     const location = useLocation();
     const isHome = location.pathname === '/';
+    const borderColor = theme === 'dark' ? 'border-zinc-800' : 'border-zinc-200';
 
     return (
         <footer className={cn(
             'py-12 px-6 border-t',
-            theme === 'dark' ? 'border-zinc-900 bg-[#09090b]' : 'border-zinc-100 bg-white'
+            borderColor,
+            theme === 'dark' ? 'bg-[#101828]' : 'bg-white'
         )}>
             <div className="max-w-7xl mx-auto flex flex-col items-center">
 
@@ -22,32 +24,32 @@ const Footer: React.FC = () => {
                         <Link
                             to="/"
                             className={cn(
-                                "flex items-center gap-3 text-xs md:text-sm font-black uppercase tracking-[0.3em] transition-all group",
-                                theme === 'dark' ? "text-zinc-500 hover:text-cyan-500" : "text-zinc-400 hover:text-cyan-600"
+                                "flex items-center gap-3 text-xs font-black uppercase tracking-[0.3em] transition-all group",
+                                theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-400 hover:text-[#364153]"
                             )}
                         >
-                            <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform text-cyan-500" />
-                            <span>127.0.0.1 No Place like Home</span>
+                            <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-transform text-[#A9792B]" />
+                            <span>127.0.0.1 HOME</span>
                         </Link>
                     </div>
                 )}
 
                 <div className="w-full flex flex-col md:flex-row justify-between items-center gap-8">
                     <div className={cn(
-                        "text-sm font-medium",
-                        theme === 'dark' ? "text-zinc-500" : "text-zinc-400"
+                        "text-xs font-medium",
+                        theme === 'dark' ? "text-zinc-500" : "text-zinc-600"
                     )}>
                         © {new Date().getFullYear()} Qudus Lawal. All rights reserved.
                     </div>
 
-                    <div className="flex space-x-12 text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">
+                    <div className="flex space-x-12 text-[10px] font-black uppercase tracking-[0.2em]">
                         <a
                             href="https://linkedin.com/in/qudus-lawal-adebola"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={cn(
                                 "transition-colors",
-                                theme === 'dark' ? "text-zinc-500 hover:text-cyan-500" : "text-zinc-400 hover:text-cyan-600"
+                                theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-600 hover:text-[#A9792B]"
                             )}
                         >
                             LinkedIn
@@ -58,7 +60,7 @@ const Footer: React.FC = () => {
                             rel="noopener noreferrer"
                             className={cn(
                                 "transition-colors",
-                                theme === 'dark' ? "text-zinc-500 hover:text-cyan-500" : "text-zinc-400 hover:text-cyan-600"
+                                theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-600 hover:text-[#A9792B]"
                             )}
                         >
                             GitHub
@@ -69,7 +71,7 @@ const Footer: React.FC = () => {
                             rel="noopener noreferrer"
                             className={cn(
                                 "transition-colors",
-                                theme === 'dark' ? "text-zinc-500 hover:text-cyan-500" : "text-zinc-400 hover:text-cyan-600"
+                                theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-600 hover:text-[#A9792B]"
                             )}
                         >
                             X

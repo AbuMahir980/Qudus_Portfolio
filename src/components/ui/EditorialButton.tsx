@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { cn } from '../../lib/utils';
 import { ReactNode } from 'react';
+import { usePage } from '../../context/PageContext';
 
 interface EditorialButtonProps {
     children: ReactNode;
@@ -19,10 +20,17 @@ const EditorialButton: React.FC<EditorialButtonProps> = ({
     href,
     download
 }) => {
-    const baseStyles = "px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center justify-center gap-2 text-xs uppercase tracking-widest";
+    const { theme } = usePage();
+    const baseStyles = "px-6 py-3 rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 text-xs uppercase tracking-widest";
+
+    const solidStyles = "bg-[#005F5A] text-white hover:bg-[#005F5A]/90 shadow-lg shadow-black/10 active:scale-95";
+    const outlineStyles = theme === 'dark'
+        ? "border border-zinc-600 text-zinc-300 hover:border-[#A9792B] hover:text-[#A9792B] active:scale-95"
+        : "border border-[#364153] text-[#364153] hover:border-[#A9792B] hover:text-[#A9792B] active:scale-95";
+
     const variants = {
-        solid: "bg-cyan-600 text-white hover:bg-cyan-500 shadow-lg shadow-cyan-900/20 active:scale-95",
-        outline: "border border-zinc-700 text-zinc-300 hover:border-cyan-500 hover:text-cyan-400 active:scale-95"
+        solid: solidStyles,
+        outline: outlineStyles,
     };
 
     const content = (

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionContainer from '../layout/SectionContainer';
-import EditorialButton from '../ui/EditorialButton';
 import LazyImage from '../ui/LazyImage';
 import { Project } from '../../types';
 import { fadeIn, slideInLeft, slideInRight } from '../../lib/animations';
-import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, Github } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { usePage } from '../../context/PageContext';
 
@@ -34,32 +33,51 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
         return () => clearInterval(interval);
     }, [project.images.length]);
 
+    const formatText = (text: string) => {
+        const parts = text.split(/(\*\*.*?\*\*)/g);
+        return parts.map((part, i) => {
+            if (part.startsWith('**') && part.endsWith('**')) {
+                return (
+                    <strong key={i} className="font-bold text-[#A9792B]">
+                        {part.slice(2, -2)}
+                    </strong>
+                );
+            }
+            return part;
+        });
+    };
+
+    // Theme-aware tokens
+    const cardBg = theme === 'dark' ? 'bg-[#1E2939] shadow-2xl' : 'bg-white shadow-md border border-zinc-200';
+    const headingColor = theme === 'dark' ? 'text-white' : 'text-[#364153]';
+    const bodyColor = theme === 'dark' ? 'text-zinc-300' : 'text-zinc-600';
+    const tabBorder = theme === 'dark' ? 'border-zinc-700' : 'border-zinc-200';
+    const tagBg = theme === 'dark' ? 'bg-[#101828] text-zinc-300 border border-zinc-700' : 'bg-zinc-100 text-[#364153] border border-zinc-200';
+
     return (
-        <SectionContainer alternate={reverse} className="py-8 md:py-16">
-            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center ${reverse ? 'lg:direction-rtl' : ''}`}>
-                {/* Visual Content: Image Carousel */}
-                <motion.div
-                    variants={reverse ? slideInRight : slideInLeft}
-                    className={`${reverse ? 'lg:order-2' : ''}`}
-                >
-                    <div className="relative group overflow-hidden rounded-xl border border-zinc-800/50 shadow-2xl bg-zinc-900">
-                        {/* Status Tag */}
+        <SectionContainer alternate={false} className="py-4 md:py-6">
+            <div className={cn("rounded-2xl overflow-hidden transition-all duration-500", cardBg)}>
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0 items-center ${reverse ? 'lg:direction-rtl' : ''}`}>
+                    {/* Visual Content: Image Carousel */}
+                    <motion.div
+                        variants={reverse ? slideInRight : slideInLeft}
+                        className={cn("relative aspect-[16/10] overflow-hidden", reverse ? 'lg:order-2' : '')}
+                    >
                         <div className="absolute top-4 left-4 z-30">
-                            <div className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
-                                <span className="text-[10px] font-black uppercase tracking-widest text-white/90">
+                            <div className="px-3 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#A9792B] animate-pulse" />
+                                <span className="text-[10px] font-black uppercase tracking-widest text-white">
                                     Status: {project.status}
                                 </span>
                             </div>
                         </div>
 
-                        {/* Commercial Badge */}
                         {project.category === 'production' && (
                             <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
                                 <motion.div
                                     initial={{ scale: 0.8, opacity: 0 }}
                                     whileHover={{ scale: 1, opacity: 1 }}
-                                    className="px-6 py-2 bg-cyan-500 text-black font-black uppercase tracking-[0.4em] text-xs transform -rotate-12 shadow-[0_0_30px_rgba(6,182,212,0.5)]"
+                                    className="px-6 py-2 bg-[#A9792B] text-white font-black uppercase tracking-[0.4em] text-xs transform -rotate-12 shadow-[0_0_30px_rgba(169,121,43,0.5)]"
                                 >
                                     Commercial
                                 </motion.div>
@@ -73,7 +91,7 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
                                 transition={{ duration: 0.5 }}
-                                className="relative aspect-[16/10] overflow-hidden"
+                                className="w-full h-full"
                             >
                                 <motion.div
                                     whileHover={{ scale: 1.05 }}
@@ -83,7 +101,7 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
                                     <LazyImage
                                         src={project.images[currentImageIndex]}
                                         alt={`${project.title} - ${currentImageIndex + 1}`}
-                                        className="object-contain w-full h-full p-2"
+                                        className="object-contain w-full h-full p-6 bg-zinc-900/5"
                                     />
                                 </motion.div>
                             </motion.div>
@@ -92,127 +110,115 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
                         {/* Carousel Navigation */}
                         {project.images.length > 1 && (
                             <>
-                                <div className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity z-20">
+                                <div className="absolute inset-0 flex items-center justify-between px-4 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity z-20 pointer-events-none">
                                     <button
                                         onClick={prevImage}
-                                        className="p-2 rounded-full bg-black/50 text-white hover:bg-cyan-500/50 transition-colors"
+                                        className="p-2 rounded-full bg-black/60 text-white hover:bg-[#A9792B]/70 transition-colors pointer-events-auto"
                                     >
                                         <ChevronLeft size={20} />
                                     </button>
                                     <button
                                         onClick={nextImage}
-                                        className="p-2 rounded-full bg-black/50 text-white hover:bg-cyan-500/50 transition-colors"
+                                        className="p-2 rounded-full bg-black/60 text-white hover:bg-[#A9792B]/70 transition-colors pointer-events-auto"
                                     >
                                         <ChevronRight size={20} />
                                     </button>
                                 </div>
-
-                                {/* Indicators */}
-                                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-                                    {project.images.map((_, i) => (
-                                        <button
-                                            key={i}
-                                            onClick={() => setCurrentImageIndex(i)}
-                                            className={cn(
-                                                "w-1.5 h-1.5 rounded-full transition-all",
-                                                currentImageIndex === i ? "w-4 bg-cyan-500" : "bg-white/30"
-                                            )}
-                                        />
-                                    ))}
-                                </div>
                             </>
                         )}
+                    </motion.div>
 
-                        <div className="absolute -inset-4 bg-cyan-500/5 rounded-2xl blur-2xl transition-all duration-700 opacity-0 group-hover:opacity-100 -z-10" />
-                    </div>
-                </motion.div>
+                    {/* Textual Content */}
+                    <div className={cn("p-8 flex flex-col h-full", reverse ? 'lg:order-1' : '')}>
 
-                {/* Textual Content Slices */}
-                <motion.div
-                    variants={fadeIn}
-                    className={`flex flex-col ${reverse ? 'lg:order-1' : ''}`}
-                >
-                    <div className="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-[10px] uppercase tracking-[0.2em] font-semibold mb-6 w-fit">
-                        {project.category === 'production' ? 'Production Lab' : 'The Sandbox'} / 0{project.id === 'powerhop' ? 1 : project.id === 'stem-mets' ? 2 : project.id === 'arc-kitchen' ? 3 : project.id === 'remsy' ? 4 : 5}
-                    </div>
+                        {/* Category badge */}
+                        <div className="inline-block px-3 py-1 rounded-full bg-[#A9792B]/10 text-[#A9792B] text-[10px] uppercase tracking-[0.2em] font-bold mb-5 w-fit">
+                            {project.category === 'production' ? 'Production Lab' : 'The Sandbox'} / 0{project.id === 'powerhop' ? 1 : project.id === 'stem-mets' ? 2 : project.id === 'arc-kitchen' ? 3 : project.id === 'remsy' ? 4 : 5}
+                        </div>
 
-                    <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500 mb-8">
-                        {project.title}.
-                    </h2>
+                        {/* Project Title */}
+                        <h2 className={cn("text-2xl md:text-3xl font-bold mb-5", headingColor)}>
+                            {project.title}
+                        </h2>
 
-                    {/* Specs Interaction */}
-                    <div className="mb-8">
-                        <div className="flex gap-8 border-b border-zinc-900 mb-6">
-                            {(['overview', 'challenge', 'solution'] as const).map((tab) => (
-                                <button
-                                    key={tab}
-                                    onClick={() => setActiveTab(tab)}
-                                    className={`pb-4 text-xs uppercase tracking-widest transition-all relative ${activeTab === tab ? 'text-cyan-400' : 'text-zinc-500 hover:text-zinc-300'
-                                        }`}
+                        {/* Tabs */}
+                        <div className="mb-5">
+                            <div className={cn("flex gap-6 border-b mb-5", tabBorder)}>
+                                {(['overview', 'challenge', 'solution'] as const).map((tab) => (
+                                    <button
+                                        key={tab}
+                                        onClick={() => setActiveTab(tab)}
+                                        className={cn(
+                                            "pb-3 text-[10px] uppercase tracking-widest transition-all relative font-bold",
+                                            activeTab === tab
+                                                ? 'text-[#A9792B]'
+                                                : theme === 'dark' ? 'text-zinc-500 hover:text-zinc-200' : 'text-zinc-400 hover:text-[#364153]'
+                                        )}
+                                    >
+                                        {tab}
+                                        {activeTab === tab && (
+                                            <motion.div
+                                                layoutId={`${project.id}-activeTab`}
+                                                className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#A9792B]"
+                                            />
+                                        )}
+                                    </button>
+                                ))}
+                            </div>
+
+                            <motion.p
+                                key={activeTab}
+                                initial={{ opacity: 0, y: 8 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className={cn("leading-loose text-xs min-h-[90px] whitespace-pre-line", bodyColor)}
+                            >
+                                {formatText(project.specs[activeTab])}
+                            </motion.p>
+                        </div>
+
+                        {/* Tech Stack Tags */}
+                        <div className="flex flex-wrap gap-2 mb-7">
+                            {project.tools.map((tool) => (
+                                <span
+                                    key={tool.name}
+                                    className={cn("px-2.5 py-1 rounded text-[9px] font-semibold uppercase tracking-wider transition-colors", tagBg)}
                                 >
-                                    {tab}
-                                    {activeTab === tab && (
-                                        <motion.div
-                                            layoutId={`${project.id}-activeTab`}
-                                            className="absolute bottom-0 left-0 right-0 h-0.5 bg-cyan-500"
-                                        />
-                                    )}
-                                </button>
+                                    {tool.name}
+                                </span>
                             ))}
                         </div>
 
-                        <motion.p
-                            key={activeTab}
-                            initial={{ opacity: 0, x: 10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            className={cn(
-                                "text-zinc-400 leading-relaxed text-lg min-h-[120px] text-justify",
-                                theme === 'dark' ? "text-zinc-400" : "text-zinc-600"
+                        {/* Action Links */}
+                        <div className="flex items-center gap-6 mt-auto">
+                            {project.live && (
+                                <a
+                                    href={project.live}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-[#005F5A] hover:text-[#005F5A]/70 transition-colors border border-[#005F5A]/40 hover:border-[#005F5A] rounded-full px-4 py-2"
+                                >
+                                    <ExternalLink size={12} />
+                                    <span>Launch Site</span>
+                                </a>
                             )}
-                        >
-                            {project.specs[activeTab]}
-                        </motion.p>
-                    </div>
 
-                    {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-3 mb-10">
-                        {project.tools.map((tool) => (
-                            <span key={tool.name} className="px-3 py-1 bg-zinc-900/50 border border-zinc-800 rounded text-[10px] text-zinc-500 uppercase tracking-tighter">
-                                {tool.name}
-                            </span>
-                        ))}
+                            {project.github && (
+                                <a
+                                    href={project.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={cn(
+                                        "flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] transition-colors",
+                                        theme === 'dark' ? "text-zinc-400 hover:text-[#A9792B]" : "text-zinc-500 hover:text-[#A9792B]"
+                                    )}
+                                >
+                                    <Github size={12} />
+                                    <span>{project.category === 'sandbox' ? 'View Source' : 'Restricted'}</span>
+                                </a>
+                            )}
+                        </div>
                     </div>
-
-                    {/* Actions */}
-                    <div className="flex items-center gap-6 mt-auto">
-                        {project.live && (
-                            <a
-                                href={project.live}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-cyan-500 hover:text-cyan-400 transition-colors"
-                            >
-                                <ExternalLink size={16} />
-                                <span>Launch Experience</span>
-                            </a>
-                        )}
-
-                        {!project.github ? (
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-600">
-                                [ Private Repository ]
-                            </span>
-                        ) : (
-                            <a
-                                href={project.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-600 hover:text-zinc-400 transition-colors"
-                            >
-                                [ Repository Restricted ]
-                            </a>
-                        )}
-                    </div>
-                </motion.div>
+                </div>
             </div>
         </SectionContainer>
     );

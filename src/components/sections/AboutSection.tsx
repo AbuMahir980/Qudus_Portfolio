@@ -71,28 +71,31 @@ const AboutSection: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="flex justify-between items-center border-b border-zinc-900/30 pb-6"
+                    className={cn(
+                        "flex justify-between items-center pb-6",
+                        theme === 'dark' ? "border-b border-zinc-800" : "border-b border-zinc-100"
+                    )}
                 >
                     <Link
                         to="/"
                         className={cn(
                             "flex items-center gap-2 text-[8px] md:text-sm font-bold uppercase tracking-[0.2em] transition-all group",
-                            theme === 'dark' ? "text-zinc-500 hover:text-cyan-500" : "text-zinc-400 hover:text-cyan-600"
+                            theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-400 hover:text-[#364153]"
                         )}
                     >
-                        <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform text-cyan-500" />
-                        <span>127.0.0.1 no place like home</span>
+                        <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform text-[#A9792B]" />
+                        <span>127.0.0.1 HOME</span>
                     </Link>
 
                     <Link
                         to="/experience"
                         className={cn(
                             "flex items-center gap-2 text-[8px] md:text-sm font-bold uppercase tracking-[0.2em] transition-all group text-right",
-                            theme === 'dark' ? "text-zinc-500 hover:text-cyan-500" : "text-zinc-400 hover:text-cyan-600"
+                            theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-400 hover:text-[#364153]"
                         )}
                     >
                         <span>See how I've evolved</span>
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform text-cyan-500" />
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform text-[#A9792B]" />
                     </Link>
                 </motion.div>
 
@@ -104,10 +107,13 @@ const AboutSection: React.FC = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 1 }}
-                            className="flex items-baseline gap-3 md:gap-4 border-b border-zinc-900/50 pb-4 md:pb-8 flex-nowrap"
+                            className="flex items-baseline gap-3 md:gap-4 pb-4 md:pb-8 flex-nowrap"
                         >
-                            <span className="text-cyan-500 font-black text-sm md:text-xl tracking-tighter whitespace-nowrap">01 /</span>
-                            <h2 className="text-xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter whitespace-nowrap mix-blend-difference">
+                            <span className="text-[#A9792B] font-black text-sm md:text-xl tracking-tighter whitespace-nowrap">01 /</span>
+                            <h2 className={cn(
+                                "text-xl md:text-3xl lg:text-4xl font-black uppercase tracking-tighter whitespace-nowrap",
+                                theme === 'dark' ? "text-white" : "text-[#364153]"
+                            )}>
                                 PERSPECTIVE
                             </h2>
                         </motion.div>
@@ -137,15 +143,15 @@ const AboutSection: React.FC = () => {
 
                                             {/* Highlight logic/human */}
                                             {part.includes('logical') && (
-                                                <span className="text-cyan-500">logical</span>
+                                                <span className="text-[#A9792B]">logical</span>
                                             )}
                                             {part.includes('human') && (
-                                                <span className="text-cyan-500">human</span>
+                                                <span className="text-[#A9792B]">human</span>
                                             )}
                                             {i === 0 && quoteTyped.includes(',') ? ', ' : ''}
                                         </React.Fragment>
                                     ))}"
-                                    <span className="inline-block w-[2px] h-[0.8em] bg-cyan-500 ml-1 animate-pulse" />
+                                    <span className="inline-block w-[2px] h-[0.8em] bg-[#A9792B] ml-1 animate-pulse" />
                                 </div>
 
                                 <motion.div
@@ -159,35 +165,38 @@ const AboutSection: React.FC = () => {
                                         My path to software engineering was a natural next step from my background in Industrial Relations. Studying how people interact within complex organizations gave me a unique perspective on how they should interact with digital ones.
                                     </motion.p>
                                     <motion.p variants={itemVariants}>
-                                        Today, I specialize in <span className="text-cyan-500 font-semibold">Frontend Engineering</span> with a <span className="text-cyan-500 font-semibold">Fullstack heart</span>.
+                                        Today, I specialize in <span className="text-[#A9792B] font-semibold">Frontend Engineering</span> with a <span className="text-[#A9792B] font-semibold">Fullstack heart</span>.
                                         Because I have a solid foundation in how the entire stack works, I’m just as comfortable talking about how data is structured as I am making sure a page moves smoothly.
                                     </motion.p>
                                     <motion.p variants={itemVariants}>
-                                        My goal is simple: <span className="text-cyan-500 font-bold italic">To build high-quality web experiences where the technology is powerful, but the use is easy.</span> I focus on clean code and natural movement to make sure the data actually helps the person using it, rather than getting in their way.
+                                        My goal is simple: <span className="text-[#A9792B] font-bold italic">To build high-quality web experiences where the technology is powerful, but the use is easy.</span> I focus on clean code and natural movement to make sure the data actually helps the person using it, rather than getting in their way.
                                     </motion.p>
                                 </motion.div>
                             </div>
 
                             {/* Education Sub-section */}
                             <motion.div variants={itemVariants} className="pt-8 md:pt-12">
-                                <h3 className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-cyan-500 mb-6 md:mb-10">
+                                <h3 className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-[#A9792B] mb-6 md:mb-10">
                                     Educational Foundation
                                 </h3>
 
-                                <div className="border-b border-zinc-900">
+                                <div className={cn("border-b", theme === 'dark' ? "border-zinc-800" : "border-zinc-200")}>
                                     {education.map((item, i) => (
                                         <motion.div
                                             key={i}
                                             variants={listItemVariants}
-                                            className="group relative py-6 md:py-8 border-t border-zinc-900 transition-all duration-500 hover:pl-4"
+                                            className={cn(
+                                                "group relative py-6 md:py-8 border-t transition-all duration-500 hover:pl-4",
+                                                theme === 'dark' ? "border-zinc-800" : "border-zinc-200"
+                                            )}
                                         >
-                                            <div className="absolute top-[-1px] left-0 right-0 h-[1px] bg-cyan-500 opacity-0 group-hover:opacity-100 group-hover:shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-500" />
+                                            <div className="absolute top-[-1px] left-0 right-0 h-[1px] bg-[#A9792B] opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
                                             <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-2 md:gap-4">
                                                 <div>
                                                     <h4 className={cn(
-                                                        "text-base md:text-xl font-bold mb-1 group-hover:text-white transition-colors",
-                                                        theme === 'dark' ? "text-zinc-200" : "text-zinc-800"
+                                                        "text-base md:text-xl font-bold mb-1 group-hover:text-[#A9792B] transition-colors",
+                                                        theme === 'dark' ? "text-zinc-200" : "text-[#364153]"
                                                     )}>
                                                         {item.degree}
                                                     </h4>
@@ -195,7 +204,7 @@ const AboutSection: React.FC = () => {
                                                         {item.institution}
                                                     </p>
                                                 </div>
-                                                <span className="text-[10px] md:text-sm font-black text-cyan-500/50">
+                                                <span className="text-[10px] md:text-sm font-black text-[#A9792B]/50">
                                                     {item.year}
                                                 </span>
                                             </div>
@@ -208,19 +217,6 @@ const AboutSection: React.FC = () => {
                 </div>
             </div>
 
-            {/* Section Footer: Back to Home */}
-            {/* <div className="mt-10 md:pt-12 border-t border-zinc-900/30 flex justify-center">
-                <Link
-                    to="/"
-                    className={cn(
-                        "flex items-center gap-3 text-[9px] md:text-sm font-black uppercase tracking-[0.3em] transition-all group",
-                        theme === 'dark' ? "text-zinc-500 hover:text-cyan-500" : "text-zinc-400 hover:text-cyan-600"
-                    )}
-                >
-                    <ArrowLeft size={14} className="group-hover:-translate-x-2 transition-transform text-cyan-500" />
-                    <span>127.0.0.1 No Place like Home</span>
-                </Link>
-            </div> */}
         </SectionContainer>
     );
 };

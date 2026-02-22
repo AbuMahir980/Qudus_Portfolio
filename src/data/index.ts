@@ -9,9 +9,9 @@ export const projects: Project[] = [
         description: 'IoT Energy Telemetry platform for real-time battery and solar/grid monitoring.',
         images: ['/assets/projects/powerhop1.webp', '/assets/projects/powerhop2.webp'],
         specs: {
-            overview: 'A comprehensive IoT dashboard designed to visualize complex energy telemetry from solar and grid charging systems.',
-            challenge: 'Transforming raw battery telemetry and charging trends into intuitive, high-performance visualizations within a legacy-heavy ecosystem.',
-            solution: 'Engineered complex Recharts-driven histograms for battery telemetry. Redesigned the full API field specifications and mobile-responsive UX flows from scratch.'
+            overview: '• **Energy-tech platform**: Led the **frontend pivot** from PlugNPower to a **telemetry-focused architecture**.',
+            challenge: '• **Major Pivot**: Adapted 9 months of work to meet new hardware-data requirements.\n• **Data Viz**: Needed to handle real-time telemetrics with **zero lag**.',
+            solution: '• **Strategic Deep-Dive**: Built a custom telemetry dashboard as a **feature-owner** to prove the logic.\n• **Project Lead**: Transitioned into architecting the **Official Ops Dashboard** based on my proof-of-concept.\n• **Architecture**: Implemented a standardized, **type-safe** folder structure for long-term scalability.'
         },
         tools: [
             { name: 'React', icon: 'react' },
@@ -84,5 +84,47 @@ export const projects: Project[] = [
         ],
         github: 'https://github.com/AbuMahir980/Remsy',
         live: 'https://remsydrivingschool.com'
+    },
+    {
+        id: 'wellness',
+        title: 'Wellness & Consultancy',
+        category: 'sandbox',
+        status: 'Refactored',
+        description: 'Mental health and wellness platform with a focus on serene UI/UX and resource management.',
+        images: ['/assets/projects/wellness1.webp', '/assets/projects/wellness2.webp'],
+        specs: {
+            overview: 'A digital space designed for mental health professionals to share resources and manage client consultations.',
+            challenge: 'Creating a UI that feels both professional and calming, while managing a growing library of digital wellness resources.',
+            solution: 'Developed a custom content filtering system and implemented a soft-tonal design system. Refactored the asset delivery pipeline for faster resource loading.'
+        },
+        tools: [
+            { name: 'React', icon: 'react' },
+            { name: 'Framer Motion', icon: 'framer' },
+            { name: 'Tailwind CSS', icon: 'tailwind' },
+            { name: 'Vite', icon: 'vite' }
+        ],
+        github: 'https://github.com/AbuMahir980/wellness-consultancy',
+        live: 'https://wellnessconsultancy.netlify.app/'
+    },
+    {
+        id: 'portfolio',
+        title: 'Qudus Portfolio (v2)',
+        category: 'sandbox',
+        status: 'Active',
+        description: 'The current "Architectural Digest" inspired portfolio—a study in high-end editorial web design.',
+        images: ['/assets/projects/portfolio1.webp', '/assets/projects/portfolio2.webp'],
+        specs: {
+            overview: 'A high-performance personal portfolio designed to showcase technical mastery through a minimalist, editorial lens.',
+            challenge: 'Balancing complex animations and structural depth without compromising on 100/100 Lighthouse performance metrics.',
+            solution: 'Engineered a custom "Feature Slice" architecture allowing for modular project showcases. Integrated a sophisticated dual-mode design system with strict type safety.'
+        },
+        tools: [
+            { name: 'TypeScript', icon: 'typescript' },
+            { name: 'React', icon: 'react' },
+            { name: 'Framer Motion', icon: 'framer' },
+            { name: 'Tailwind CSS', icon: 'tailwind' }
+        ],
+        github: 'https://github.com/AbuMahir980/Qudus_Portfolio',
+        live: 'https://quduslawal.me'
     }
 ];

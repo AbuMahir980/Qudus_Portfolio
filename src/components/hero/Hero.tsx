@@ -54,19 +54,22 @@ const Hero: React.FC = () => {
                     variants={fadeIn}
                     className={cn(
                         'text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.1] mb-6',
-                        theme === 'dark' ? 'text-white' : 'text-zinc-950'
+                        theme === 'dark' ? 'text-white' : 'text-[#364153]'
                     )}
                 >
-                    Hi, I'm <span className="text-cyan-500">Qudus Lawal.</span>
+                    Hi, I'm <span className="text-[#A9792B]">Qudus Lawal.</span>
                 </motion.h1>
 
                 <div className="h-10 md:h-12 mb-4 overflow-hidden">
                     <motion.p
                         variants={fadeIn}
-                        className="text-xl md:text-2xl lg:text-3xl font-bold text-zinc-500 tracking-tight"
+                        className={cn(
+                            'text-xl md:text-2xl lg:text-3xl font-bold tracking-tight',
+                            theme === 'dark' ? 'text-zinc-400' : 'text-[#364153]'
+                        )}
                     >
                         {phrases[index].substring(0, subIndex)}
-                        <span className="inline-block w-[2px] h-[0.8em] bg-cyan-500 ml-1 animate-pulse" />
+                        <span className="inline-block w-[2px] h-[0.8em] bg-[#A9792B] ml-1 animate-pulse" />
                     </motion.p>
                 </div>
 
@@ -74,8 +77,8 @@ const Hero: React.FC = () => {
                     <motion.p
                         variants={fadeIn}
                         className={cn(
-                            'text-base md:text-lg font-medium tracking-wider uppercase',
-                            theme === 'dark' ? 'text-zinc-400' : 'text-zinc-600'
+                            'text-sm md:text-base font-medium tracking-widest uppercase',
+                            theme === 'dark' ? 'text-zinc-400' : 'text-[#364153]'
                         )}
                     >
                         Frontend Architecture. Data Integrity. Human-Centric Design.
@@ -84,7 +87,7 @@ const Hero: React.FC = () => {
                     <motion.div variants={fadeIn}>
                         <Link
                             to="/about"
-                            className="group flex items-center justify-center gap-2 text-sm font-semibold text-cyan-500 hover:text-cyan-400 transition-colors"
+                            className="group flex items-center justify-center gap-2 text-sm font-semibold text-[#A9792B] hover:text-[#A9792B]/80 transition-colors"
                         >
                             Learn about me
                             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -116,13 +119,13 @@ const Hero: React.FC = () => {
                     variants={fadeIn}
                     className="flex items-center justify-center gap-6"
                 >
-                    <a href="https://github.com/AbuMahir980" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-cyan-500 transition-colors">
+                    <a href="https://github.com/AbuMahir980" target="_blank" rel="noopener noreferrer" className={cn("transition-colors", theme === 'dark' ? 'text-[#A9792B] hover:text-white' : 'text-[#364153] hover:text-[#A9792B]')}>
                         <Github size={20} />
                     </a>
-                    <a href="https://linkedin.com/in/qudus-lawal-adebola" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-cyan-500 transition-colors">
+                    <a href="https://linkedin.com/in/qudus-lawal-adebola" target="_blank" rel="noopener noreferrer" className={cn("transition-colors", theme === 'dark' ? 'text-[#A9792B] hover:text-white' : 'text-[#364153] hover:text-[#A9792B]')}>
                         <Linkedin size={20} />
                     </a>
-                    <a href="https://x.com/abu_maahir980" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-cyan-500 transition-colors">
+                    <a href="https://x.com/abu_maahir980" target="_blank" rel="noopener noreferrer" className={cn("transition-colors", theme === 'dark' ? 'text-[#A9792B] hover:text-white' : 'text-[#364153] hover:text-[#A9792B]')}>
                         <Twitter size={20} />
                     </a>
                 </motion.div>
