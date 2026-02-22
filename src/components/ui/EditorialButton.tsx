@@ -9,6 +9,7 @@ interface EditorialButtonProps {
     variant?: 'solid' | 'outline';
     className?: string;
     href?: string;
+    target?: string;
     download?: boolean;
 }
 
@@ -18,6 +19,7 @@ const EditorialButton: React.FC<EditorialButtonProps> = ({
     variant = 'solid',
     className,
     href,
+    target,
     download
 }) => {
     const { theme } = usePage();
@@ -44,7 +46,7 @@ const EditorialButton: React.FC<EditorialButtonProps> = ({
 
     if (href) {
         return (
-            <a href={href} onClick={onClick} download={download} className="inline-block">
+            <a href={href} target={target} onClick={onClick} download={download} className="inline-block">
                 {content}
             </a>
         );
