@@ -5,20 +5,20 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { usePage } from '../context/PageContext';
 import SectionContainer from '../components/layout/SectionContainer';
-import PowerHopSection from '../components/features/PowerHopSection';
-import LearningPlatformSection from '../components/features/LearningPlatformSection';
-import PerformanceRefactorSection from '../components/features/PerformanceRefactorSection';
-import ConversionEngineSection from '../components/features/ConversionEngineSection';
-import SaaSIntegrationSection from '../components/features/SaaSIntegrationSection';
+import ProjectSlice from '../components/features/ProjectSlice';
 import SEOHead from '../lib/SEOHead';
 import { seoConfig } from '../data/seo';
+import { projects } from '../data';
 
 const Projects: React.FC = () => {
     const { theme } = usePage();
 
+    const productionProjects = projects.filter(p => p.category === 'production');
+    const sandboxProjects = projects.filter(p => p.category === 'sandbox');
+
     return (
-        <div className="pt-4">
-            <SEOHead {...seoConfig.home} title="Projects | Qudus Lawal" />
+        <div className="pt-4 overflow-x-hidden">
+            <SEOHead {...seoConfig.home} title="Solutions | Qudus Lawal" />
 
             <SectionContainer id="projects-header" className="pt-8 md:pt-16">
                 <div className="space-y-12 mb-10 md:mb-8">
@@ -91,11 +91,49 @@ const Projects: React.FC = () => {
                 </div>
             </SectionContainer>
 
-            <PowerHopSection />
-            <LearningPlatformSection />
-            <PerformanceRefactorSection />
-            <ConversionEngineSection />
-            <SaaSIntegrationSection />
+            {/* Production Lab Category */}
+            <div className="relative mt-8">
+                <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                    <div className="w-full border-t border-zinc-900/50"></div>
+                </div>
+                <div className="relative flex justify-center">
+                    <span className="bg-black px-6 text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-cyan-500/80">
+                        Category 01: Production Lab
+                    </span>
+                </div>
+            </div>
+
+            <div className="space-y-0">
+                {productionProjects.map((project, index) => (
+                    <ProjectSlice
+                        key={project.id}
+                        project={project}
+                        reverse={index % 2 !== 0}
+                    />
+                ))}
+            </div>
+
+            {/* Sandbox Category */}
+            <div className="relative mt-8 md:mt-20">
+                <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                    <div className="w-full border-t border-zinc-900/50"></div>
+                </div>
+                <div className="relative flex justify-center">
+                    <span className="bg-black px-6 text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-zinc-600">
+                        Category 02: THE Sandbox
+                    </span>
+                </div>
+            </div>
+
+            <div className="space-y-0 pb-20">
+                {sandboxProjects.map((project, index) => (
+                    <ProjectSlice
+                        key={project.id}
+                        project={project}
+                        reverse={index % 2 === 0}
+                    />
+                ))}
+            </div>
 
             {/* Page Footer: Back to Home */}
             <SectionContainer id="projects-footer" className="pb-24">

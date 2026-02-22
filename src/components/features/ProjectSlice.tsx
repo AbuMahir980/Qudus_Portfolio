@@ -35,28 +35,57 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
     }, [project.images.length]);
 
     return (
-        <SectionContainer alternate={reverse} className="py-8 md:py-12">
+        <SectionContainer alternate={reverse} className="py-8 md:py-16">
             <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center ${reverse ? 'lg:direction-rtl' : ''}`}>
                 {/* Visual Content: Image Carousel */}
                 <motion.div
                     variants={reverse ? slideInRight : slideInLeft}
                     className={`${reverse ? 'lg:order-2' : ''}`}
                 >
-                    <div className="relative group overflow-hidden rounded-xl border border-zinc-800/50 shadow-2xl">
+                    <div className="relative group overflow-hidden rounded-xl border border-zinc-800/50 shadow-2xl bg-zinc-900">
+                        {/* Status Tag */}
+                        <div className="absolute top-4 left-4 z-30">
+                            <div className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
+                                <span className="text-[10px] font-black uppercase tracking-widest text-white/90">
+                                    Status: {project.status}
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Commercial Badge */}
+                        {project.category === 'production' && (
+                            <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
+                                <motion.div
+                                    initial={{ scale: 0.8, opacity: 0 }}
+                                    whileHover={{ scale: 1, opacity: 1 }}
+                                    className="px-6 py-2 bg-cyan-500 text-black font-black uppercase tracking-[0.4em] text-xs transform -rotate-12 shadow-[0_0_30px_rgba(6,182,212,0.5)]"
+                                >
+                                    Commercial
+                                </motion.div>
+                            </div>
+                        )}
+
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={currentImageIndex}
-                                initial={{ opacity: 0, scale: 1.05 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.95 }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
                                 transition={{ duration: 0.5 }}
-                                className="relative aspect-[16/10]"
+                                className="relative aspect-[16/10] overflow-hidden"
                             >
-                                <LazyImage
-                                    src={project.images[currentImageIndex]}
-                                    alt={`${project.title} - ${currentImageIndex + 1}`}
-                                    className="object-cover w-full h-full"
-                                />
+                                <motion.div
+                                    whileHover={{ scale: 1.05 }}
+                                    transition={{ duration: 0.8, ease: "easeOut" }}
+                                    className="w-full h-full"
+                                >
+                                    <LazyImage
+                                        src={project.images[currentImageIndex]}
+                                        alt={`${project.title} - ${currentImageIndex + 1}`}
+                                        className="object-contain w-full h-full p-2"
+                                    />
+                                </motion.div>
                             </motion.div>
                         </AnimatePresence>
 
@@ -104,7 +133,7 @@ const ProjectSlice: React.FC<ProjectSliceProps> = ({ project, reverse }) => {
                     className={`flex flex-col ${reverse ? 'lg:order-1' : ''}`}
                 >
                     <div className="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-[10px] uppercase tracking-[0.2em] font-semibold mb-6 w-fit">
-                        Case Study / 0{project.id === 'powerhop' ? 1 : project.id === 'stem-mets' ? 2 : project.id === 'arc-kitchen' ? 3 : project.id === 'remsy' ? 4 : 5}
+                        {project.category === 'production' ? 'Production Lab' : 'The Sandbox'} / 0{project.id === 'powerhop' ? 1 : project.id === 'stem-mets' ? 2 : project.id === 'arc-kitchen' ? 3 : project.id === 'remsy' ? 4 : 5}
                     </div>
 
                     <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-500 mb-8">

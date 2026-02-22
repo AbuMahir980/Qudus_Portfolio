@@ -19,6 +19,8 @@ export interface ProjectBlueprint {
 export interface Project {
   id: string;
   title: string;
+  category: 'production' | 'sandbox';
+  status: string;
   description: string;
   images: string[];
   specs: ProjectSpecs;
