@@ -209,7 +209,7 @@ const AboutSection: React.FC = () => {
             </div>
 
             {/* Section Footer: Back to Home */}
-            <div className="mt-10 md:pt-12 border-t border-zinc-900/30 flex justify-center">
+            {/* <div className="mt-10 md:pt-12 border-t border-zinc-900/30 flex justify-center">
                 <Link
                     to="/"
                     className={cn(
@@ -220,7 +220,7 @@ const AboutSection: React.FC = () => {
                     <ArrowLeft size={14} className="group-hover:-translate-x-2 transition-transform text-cyan-500" />
                     <span>127.0.0.1 No Place like Home</span>
                 </Link>
-            </div>
+            </div> */}
         </SectionContainer>
     );
 };

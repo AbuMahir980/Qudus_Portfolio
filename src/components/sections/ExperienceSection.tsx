@@ -125,7 +125,7 @@ const ExperienceSection: React.FC = () => {
                                             : theme === 'dark' ? "text-zinc-500 hover:text-zinc-300" : "text-zinc-400 hover:text-zinc-600"
                                     )}
                                 >
-                                    <span className="opacity-50 text-[10px]">PH</span>
+                                    <span className="opacity-50 text-[10px]">XP</span>
                                     <span>0{3 - i}</span>
                                     {activePhase === i && (
                                         <motion.div

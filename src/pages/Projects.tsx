@@ -21,7 +21,7 @@ const Projects: React.FC = () => {
             <SEOHead {...seoConfig.home} title="Projects | Qudus Lawal" />
 
             <SectionContainer id="projects-header" className="pt-8 md:pt-16">
-                <div className="space-y-12 mb-12 md:mb-16">
+                <div className="space-y-12 mb-10 md:mb-8">
                     {/* Navigation Row */}
                     <motion.div
                         initial={{ opacity: 0, y: -10 }}
@@ -38,7 +38,7 @@ const Projects: React.FC = () => {
                             )}
                         >
                             <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform text-cyan-500" />
-                            <span>127.0.0.1</span>
+                            <span>127.0.0.1 NO PLACE LIKE HOME</span>
                         </Link>
 
                         <Link
@@ -71,7 +71,7 @@ const Projects: React.FC = () => {
                         </div>
 
                         {/* Right Side: Intro */}
-                        <div className="md:col-span-8 md:pt-16 lg:pt-24">
+                        <div className="md:col-span-8 md:pt-8 lg:pt-12">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -80,10 +80,10 @@ const Projects: React.FC = () => {
                                 className="max-w-2xl"
                             >
                                 <p className={cn(
-                                    "text-lg md:text-2xl font-medium leading-relaxed italic",
-                                    theme === 'dark' ? "text-zinc-400" : "text-zinc-600"
+                                    "text-sm md:text-base font-medium leading-relaxed uppercase tracking-wider",
+                                    theme === 'dark' ? "text-zinc-500" : "text-zinc-500"
                                 )}>
-                                    A selection of recent engineering work, focusing on performance, scalability, and intuitive user interfaces.
+                                    Turning 'what if' into 'it works.' Exploring the intersection of human-centric design and scalable frontend architecture.
                                 </p>
                             </motion.div>
                         </div>

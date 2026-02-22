@@ -20,9 +20,8 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  image: string;
+  images: string[];
   specs: ProjectSpecs;
-  blueprint: ProjectBlueprint;
   tools: TechStack[];
   github?: string;
   live?: string;
