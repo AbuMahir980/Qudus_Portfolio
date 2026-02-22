@@ -6,6 +6,7 @@ import { cn } from '../../lib/utils';
 import { usePage } from '../../context/PageContext';
 import SectionContainer from '../layout/SectionContainer';
 
+
 const experiences = [
     {
         role: "Phase 03: The Lead Architect (Current)",
@@ -59,46 +60,15 @@ const ExperienceSection: React.FC = () => {
         exit: { opacity: 0, x: -20 }
     };
 
-    const borderColor = theme === 'dark' ? "border-zinc-800" : "border-zinc-200";
+    const borderColor = theme === 'dark' ? "border-white" : "border-[#364153]";
     const mutedText = theme === 'dark' ? "text-zinc-500" : "text-zinc-400";
     const bodyText = theme === 'dark' ? "text-zinc-400" : "text-zinc-600";
     const headingText = theme === 'dark' ? "text-white" : "text-[#364153]";
 
     return (
         <SectionContainer id="experience" className="pt-8 md:pt-16">
-            <div className="space-y-12 mb-12 md:mb-16">
-                {/* Full-width Navigation Row */}
-                <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className={cn("flex justify-between items-center pb-6 border-b", borderColor)}
-                >
-                    <Link
-                        to="/about"
-                        className={cn(
-                            "flex items-center gap-2 text-[9px] md:text-xs font-bold uppercase tracking-[0.2em] transition-all group",
-                            theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-400 hover:text-[#364153]"
-                        )}
-                    >
-                        <ArrowLeft size={12} className="group-hover:-translate-x-1 transition-transform text-[#A9792B]" />
-                        <span>Back to knowing me</span>
-                    </Link>
 
-                    <Link
-                        to="/projects"
-                        className={cn(
-                            "flex items-center gap-2 text-[9px] md:text-xs font-bold uppercase tracking-[0.2em] transition-all group text-right",
-                            theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-400 hover:text-[#364153]"
-                        )}
-                    >
-                        <span>Enter into my mind</span>
-                        <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform text-[#A9792B]" />
-                    </Link>
-                </motion.div>
-
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                <div className="grid grid-cols-1 py-8 md:grid-cols-12 gap-6 items-start">
                     {/* Left Side: Heading */}
                     <div className="md:col-span-4">
                         <motion.div
@@ -118,7 +88,7 @@ const ExperienceSection: React.FC = () => {
                     {/* Right Side: Tabbed Interface */}
                     <div className="md:col-span-8">
                         {/* Tabs */}
-                        <div className={cn("flex gap-8 md:gap-12 border-b pb-4 mb-12", borderColor)}>
+                        <div className={cn("flex gap-8 md:gap-12 pb-4 mb-12 md:pt-10")}>
                             {experiences.map((_, i) => (
                                 <button
                                     key={i}
@@ -127,7 +97,7 @@ const ExperienceSection: React.FC = () => {
                                         "relative group flex items-center gap-2 text-xs font-black tracking-widest uppercase transition-colors",
                                         activePhase === i
                                             ? "text-[#A9792B]"
-                                            : theme === 'dark' ? "text-zinc-500 hover:text-zinc-300" : "text-zinc-400 hover:text-[#364153]"
+                                            : theme === 'dark' ? "text-zinc-300 hover:text-white" : "text-zinc-400 hover:text-[#364153]"
                                     )}
                                 >
                                     <span className="opacity-50 text-[10px]">XP</span>
@@ -234,7 +204,7 @@ const ExperienceSection: React.FC = () => {
                                                 className={cn(
                                                     "text-[10px] md:text-xs font-semibold px-4 py-2 border rounded-full transition-all duration-300",
                                                     theme === 'dark'
-                                                        ? "border-zinc-700 text-zinc-400 hover:border-[#A9792B]/60 hover:text-[#A9792B] bg-[#1E2939]"
+                                                        ? "border-zinc-700 text-white hover:border-[#A9792B]/60 hover:text-[#A9792B] bg-[#1E2939]"
                                                         : "border-zinc-200 text-[#364153] hover:border-[#A9792B]/60 hover:text-[#A9792B] bg-white"
                                                 )}
                                             >
@@ -247,7 +217,7 @@ const ExperienceSection: React.FC = () => {
                         </motion.div>
                     </div>
                 </div>
-            </div>
+
 
             {/* Section Footer: Back to Home */}
             <div className={cn("mt-10 pt-8 border-t flex justify-center", borderColor)}>
@@ -255,7 +225,7 @@ const ExperienceSection: React.FC = () => {
                     to="/"
                     className={cn(
                         "flex items-center gap-3 text-[9px] md:text-xs font-black uppercase tracking-[0.3em] transition-all group",
-                        theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-400 hover:text-[#364153]"
+                        theme === 'dark' ? "text-white hover:text-[#A9792B]" : "text-[#364153] hover:text-[#A9792B]"
                     )}
                 >
                     <ArrowLeft size={14} className="group-hover:-translate-x-2 transition-transform text-[#A9792B]" />

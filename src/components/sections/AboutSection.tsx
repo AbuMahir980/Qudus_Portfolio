@@ -6,6 +6,7 @@ import { cn } from '../../lib/utils';
 import { usePage } from '../../context/PageContext';
 import SectionContainer from '../layout/SectionContainer';
 
+
 const AboutSection: React.FC = () => {
     const { theme } = usePage();
     const [quoteTyped, setQuoteTyped] = React.useState("");
@@ -62,44 +63,13 @@ const AboutSection: React.FC = () => {
         animate: { opacity: 1, y: 0 }
     };
 
+    const borderColor = theme === 'dark' ? "border-white" : "border-[#364153]";
+
     return (
         <SectionContainer id="about" className="pt-8 md:pt-16">
-            <div className="space-y-12">
-                {/* Full-width Navigation Row */}
-                <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className={cn(
-                        "flex justify-between items-center pb-6",
-                        theme === 'dark' ? "border-b border-zinc-800" : "border-b border-zinc-100"
-                    )}
-                >
-                    <Link
-                        to="/"
-                        className={cn(
-                            "flex items-center gap-2 text-[8px] md:text-sm font-bold uppercase tracking-[0.2em] transition-all group",
-                            theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-400 hover:text-[#364153]"
-                        )}
-                    >
-                        <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform text-[#A9792B]" />
-                        <span>127.0.0.1 HOME</span>
-                    </Link>
+            {/* <div className="space-y-12"> */}
 
-                    <Link
-                        to="/experience"
-                        className={cn(
-                            "flex items-center gap-2 text-[8px] md:text-sm font-bold uppercase tracking-[0.2em] transition-all group text-right",
-                            theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-400 hover:text-[#364153]"
-                        )}
-                    >
-                        <span>See how I've evolved</span>
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform text-[#A9792B]" />
-                    </Link>
-                </motion.div>
-
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
+                <div className="grid grid-cols-1 py-8 md:grid-cols-12 gap-8 md:gap-12 items-start">
                     {/* Left Side: Heading */}
                     <div className="md:col-span-4">
                         <motion.div
@@ -215,6 +185,18 @@ const AboutSection: React.FC = () => {
                         </motion.div>
                     </div>
                 </div>
+            {/* </div> */}
+            <div className={cn("mt-10 pt-8 border-t flex justify-center", borderColor)}>
+                <Link
+                    to="/"
+                    className={cn(
+                        "flex items-center gap-3 text-[9px] md:text-xs font-black uppercase tracking-[0.3em] transition-all group",
+                        theme === 'dark' ? "text-white hover:text-[#A9792B]" : "text-[#364153] hover:text-[#A9792B]"
+                    )}
+                >
+                    <ArrowLeft size={14} className="group-hover:-translate-x-2 transition-transform text-[#A9792B]" />
+                    <span>127.0.0.1 HOME</span>
+                </Link>
             </div>
 
         </SectionContainer>

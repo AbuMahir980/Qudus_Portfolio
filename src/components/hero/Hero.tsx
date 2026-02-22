@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
     }, [subIndex, index, isDeleting, phrases]);
 
     return (
-        <section className="flex-1 flex items-center justify-center px-6 min-h-[70vh] md:min-h-0">
+        <section className="flex-1 flex pt-8 items-center justify-center px-6 min-h-[70vh] md:min-h-0">
             <motion.div
                 variants={staggerContainer}
                 initial="initial"

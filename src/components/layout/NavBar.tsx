@@ -34,9 +34,9 @@ const NavBar: React.FC = () => {
                 'fixed top-0 left-0 right-0 z-[100] transition-all duration-300 border-b',
                 isScrolled
                     ? theme === 'dark'
-                        ? 'bg-[#101828]/90 border-zinc-800 backdrop-blur-md py-2'
-                        : 'bg-white/95 border-zinc-200 backdrop-blur-md py-2'
-                    : 'bg-transparent border-transparent py-4'
+                        ? 'bg-[#101828]/90 border-[#ffffff] backdrop-blur-md py-2'
+                        : 'bg-white/95 border-[#364153] backdrop-blur-md py-2'
+                    : 'bg-transparent border-[#364153] py-4'
             )}
         >
             <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
