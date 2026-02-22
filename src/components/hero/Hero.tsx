@@ -101,7 +101,7 @@ const Hero: React.FC = () => {
                 >
                     <EditorialButton
                         variant="solid"
-                        href="/resume.pdf"
+                        // href="/resume.pdf"
                         download
                     >
                         Download Resume <Download size={18} />

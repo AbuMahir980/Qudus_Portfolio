@@ -48,7 +48,7 @@ export const projects: Project[] = [
             { name: 'Vite', icon: 'vite' }
         ],
         github: 'https://github.com/lassbon/stemmets-frontend-customer',
-        live: 'https://stemmets.com'
+        live: 'https://www.stemmets.com/'
     },
     {
         id: 'arc-kitchen',
@@ -71,7 +71,7 @@ export const projects: Project[] = [
             { name: 'SEO', icon: 'seo' },
         ],
         github: 'https://github.com/AbuMahir980/ArcKitchen',
-        live: 'https://thearckitchen.netlify.app/'
+        live: 'https://www.thearckitchen.com/'
     },
     {
         id: 'remsy',

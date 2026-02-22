@@ -11,7 +11,7 @@ const ContactSection: React.FC = () => {
     const borderColor = theme === 'dark' ? "border-zinc-800" : "border-zinc-200";
 
     return (
-        <SectionContainer id="contact" className={cn("py-24 md:py-32 border-t", borderColor)}>
+        <SectionContainer id="contact" className={cn("pt-8 md:pt-16 border-t", borderColor)}>
             <div className="flex flex-col items-center text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -45,7 +45,7 @@ const ContactSection: React.FC = () => {
                 </motion.div>
 
                 {/* Section Footer: Back to Home */}
-                <motion.div
+                {/* <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
@@ -56,13 +56,13 @@ const ContactSection: React.FC = () => {
                         to="/"
                         className={cn(
                             "flex items-center gap-3 text-[9px] md:text-xs font-black uppercase tracking-[0.3em] transition-all group",
-                            theme === 'dark' ? "text-gray-500 hover:text-[#A9792B]" : "text-gray-400 hover:text-[#364153]"
+                            theme === 'dark' ? "text-zinc-500 hover:text-[#A9792B]" : "text-zinc-400 hover:text-[#364153]"
                         )}
                     >
                         <ArrowLeft size={14} className="group-hover:-translate-x-2 transition-transform text-[#A9792B]" />
                         <span>127.0.0.1 HOME</span>
                     </Link>
-                </motion.div>
+                </motion.div> */}
             </div>
         </SectionContainer>
     );
