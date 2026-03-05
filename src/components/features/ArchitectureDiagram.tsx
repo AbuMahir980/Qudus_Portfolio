@@ -60,25 +60,18 @@ const ArchitectureDiagram = () => {
         <div className="w-px h-4 bg-zinc-300 dark:bg-zinc-700" />
 
         {/* Data flow */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 w-full">
-          <div className={`${boxBase} ${dataBox}`}>
+        <div className="flex items-center justify-center gap-1.5 sm:gap-2 w-full">
+          <div className={`${boxBase} ${dataBox} px-2 sm:px-4 text-[10px] sm:text-xs flex-1`}>
             REST API
           </div>
-          <div className={`${boxBase} ${dataBox} hidden sm:block`}>
+          <span className="text-gray-400 dark:text-gray-600 text-xs shrink-0">→</span>
+          <div className={`${boxBase} ${dataBox} px-2 sm:px-4 text-[10px] sm:text-xs flex-1`}>
             TanStack Query
           </div>
-          <div className={`${boxBase} ${dataBox} hidden sm:block`}>
+          <span className="text-gray-400 dark:text-gray-600 text-xs shrink-0">→</span>
+          <div className={`${boxBase} ${dataBox} px-2 sm:px-4 text-[10px] sm:text-xs flex-1`}>
             React Components
           </div>
-        </div>
-
-        {/* Mobile-only: inline data flow */}
-        <div className="flex sm:hidden items-center gap-2 text-[10px] font-medium text-gray-400 dark:text-gray-500">
-          <span>REST API</span>
-          <span>→</span>
-          <span>TanStack Query</span>
-          <span>→</span>
-          <span>React Components</span>
         </div>
       </div>
     </motion.div>
