@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,7 +10,6 @@
   --green: #005F5A;
   --dark-bg: #101828;
   --dark-card: #1E2939;
-  color-scheme: light dark;
 }
 
 html {
@@ -25,11 +26,10 @@ body {
 }
 
 .light body {
-  background-color: #ffffffcb;
+  background-color: #ffffff;
   color: #1a1a1a;
 }
 
-/* Custom Selection */
 ::selection {
   background-color: rgba(169, 121, 43, 0.25);
   color: inherit;

@@ -1,138 +1,77 @@
-import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { fadeIn, staggerContainer } from '../../lib/animations';
-import { usePage } from '../../context/PageContext';
-import { cn } from '../../lib/utils';
-import { Link } from 'react-router-dom';
-import { Download, ArrowRight, Github, Linkedin, Twitter, X } from 'lucide-react';
-import EditorialButton from '../ui/EditorialButton';
+import { Download, Github, Linkedin, Mail } from 'lucide-react';
 
-const TYPE_SPEED = 100;
-const DELETE_SPEED = 50;
-const WAIT_TIME = 2000;
+const Hero = () => {
+  return (
+    <section
+      id="top"
+      className="min-h-[85vh] flex items-center justify-center px-6"
+    >
+      <motion.div
+        variants={staggerContainer}
+        initial="initial"
+        animate="animate"
+        className="max-w-2xl text-center"
+      >
+        <motion.h1
+          variants={fadeIn}
+          className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] mb-4 text-navy dark:text-white"
+        >
+          Hi, I'm <span className="text-gold">Qudus Lawal.</span>
+        </motion.h1>
 
-const Hero: React.FC = () => {
-    const { theme } = usePage();
-    const phrases = ["Building Systems.", "Refining Pixels.", "Engineering Impact."];
-    const [index, setIndex] = useState(0);
-    const [subIndex, setSubIndex] = useState(0);
-    const [isDeleting, setIsDeleting] = useState(false);
+        <motion.p
+          variants={fadeIn}
+          className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 font-medium"
+        >
+          I build data-intensive React applications.
+        </motion.p>
 
-    // Typewriter logic
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            if (!isDeleting) {
-                if (subIndex < phrases[index].length) {
-                    setSubIndex(prev => prev + 1);
-                } else {
-                    // Phrase complete, wait and start deleting
-                    setTimeout(() => setIsDeleting(true), WAIT_TIME);
-                }
-            } else {
-                if (subIndex > 0) {
-                    setSubIndex(prev => prev - 1);
-                } else {
-                    // Back to start, next phrase (looping)
-                    setIsDeleting(false);
-                    setIndex((prev) => (prev + 1) % phrases.length);
-                }
-            }
-        }, isDeleting ? DELETE_SPEED : TYPE_SPEED);
+        <motion.div
+          variants={fadeIn}
+          className="flex items-center justify-center gap-5 mb-8"
+        >
+          <a
+            href="https://github.com/AbuMahir980"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-navy dark:text-gray-400 hover:text-gold dark:hover:text-gold transition-colors"
+            aria-label="GitHub"
+          >
+            <Github size={22} />
+          </a>
+          <a
+            href="https://linkedin.com/in/qudus-lawal-adebola"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-navy dark:text-gray-400 hover:text-gold dark:hover:text-gold transition-colors"
+            aria-label="LinkedIn"
+          >
+            <Linkedin size={22} />
+          </a>
+          <a
+            href="mailto:lawalqudus980@gmail.com"
+            className="text-navy dark:text-gray-400 hover:text-gold dark:hover:text-gold transition-colors"
+            aria-label="Email"
+          >
+            <Mail size={22} />
+          </a>
+        </motion.div>
 
-        return () => clearTimeout(timeout);
-    }, [subIndex, index, isDeleting, phrases]);
-
-    return (
-        <section className="flex-1 flex pt-8 items-center justify-center px-6 min-h-[70vh] md:min-h-0">
-            <motion.div
-                variants={staggerContainer}
-                initial="initial"
-                animate="animate"
-                className="max-w-5xl text-center"
-            >
-                <motion.h1
-                    variants={fadeIn}
-                    className={cn(
-                        'text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.1] mb-6',
-                        theme === 'dark' ? 'text-white' : 'text-[#364153]'
-                    )}
-                >
-                    Hi, I'm <span className="text-[#A9792B]">Qudus Lawal.</span>
-                </motion.h1>
-
-                <div className="h-10 md:h-12 mb-4 overflow-hidden">
-                    <motion.p
-                        variants={fadeIn}
-                        className={cn(
-                            'text-xl md:text-2xl lg:text-3xl font-bold tracking-tight',
-                            theme === 'dark' ? 'text-gray-400' : 'text-[#364153]'
-                        )}
-                    >
-                        {phrases[index].substring(0, subIndex)}
-                        <span className="inline-block w-[2px] h-[0.8em] bg-[#A9792B] ml-1 animate-pulse" />
-                    </motion.p>
-                </div>
-
-                <div className="mb-12 space-y-8">
-                    <motion.p
-                        variants={fadeIn}
-                        className={cn(
-                            'text-sm md:text-base font-medium tracking-widest uppercase',
-                            theme === 'dark' ? 'text-gray-400' : 'text-[#364153]'
-                        )}
-                    >
-                        Frontend Architecture. Data Integrity. Human-Centric Design.
-                    </motion.p>
-
-                    <motion.div variants={fadeIn}>
-                        <Link
-                            to="/about"
-                            className="group flex items-center justify-center gap-2 text-sm font-semibold text-[#A9792B] hover:text-[#A9792B]/80 transition-colors"
-                        >
-                            Learn about me
-                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                    </motion.div>
-                </div>
-
-                <motion.div
-                    variants={fadeIn}
-                    className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8"
-                >
-                    <EditorialButton
-                        variant="solid"
-                        href="https://drive.google.com/file/d/1mEA3aQ91AT_TDVZ2PZTUin4Rn4bAtYJO/view?usp=sharing"
-                        // download
-                        target='_blank'
-                    >
-                        Download Resume <Download size={18} />
-                    </EditorialButton>
-                    <EditorialButton
-                        variant="outline"
-                        onClick={() => window.location.href = 'mailto:lawalqudus980@gmail.com'}
-                    >
-                        Get in Touch <ArrowRight size={18} />
-                    </EditorialButton>
-                </motion.div>
-
-                {/* Social Icons Below Buttons */}
-                <motion.div
-                    variants={fadeIn}
-                    className="flex items-center justify-center gap-6"
-                >
-                    <a href="https://github.com/AbuMahir980" target="_blank" rel="noopener noreferrer" className={cn("transition-colors", theme === 'dark' ? 'text-[#A9792B] hover:text-white' : 'text-[#364153] hover:text-[#A9792B]')}>
-                        <Github size={20} />
-                    </a>
-                    <a href="https://linkedin.com/in/qudus-lawal-adebola" target="_blank" rel="noopener noreferrer" className={cn("transition-colors", theme === 'dark' ? 'text-[#A9792B] hover:text-white' : 'text-[#364153] hover:text-[#A9792B]')}>
-                        <Linkedin size={20} />
-                    </a>
-                    <a href="https://x.com/abu_maahir980" target="_blank" rel="noopener noreferrer" className={cn("transition-colors", theme === 'dark' ? 'text-[#A9792B] hover:text-white' : 'text-[#364153] hover:text-[#A9792B]')}>
-                        <Twitter size={20} />
-                    </a>
-                </motion.div>
-            </motion.div>
-        </section>
-    );
+        <motion.div variants={fadeIn}>
+          <a
+            href="https://drive.google.com/file/d/1mEA3aQ91AT_TDVZ2PZTUin4Rn4bAtYJO/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-green text-white text-xs font-bold uppercase tracking-widest hover:bg-green/90 transition-colors shadow-lg shadow-black/10 active:scale-95"
+          >
+            Download Resume <Download size={16} />
+          </a>
+        </motion.div>
+      </motion.div>
+    </section>
+  );
 };
 
 export default Hero;

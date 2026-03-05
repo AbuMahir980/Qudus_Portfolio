@@ -1,66 +1,26 @@
-export interface TechStack {
-  name: string;
-  icon: string | React.ComponentType;
-}
-
-export interface ProjectSpecs {
-  overview: string;
-  challenge: string;
-  solution: string;
-}
-export interface ProjectSpecs2 {
-  title: string;
-  concept: string;
-  highlights: string;
-}
-
-export interface ProjectBlueprint {
-  title: string;
-  type: 'api' | 'schema' | 'flow';
-  language: string;
-  code: string;
-}
-
 export interface Project {
   id: string;
   title: string;
-  category: 'production' | 'sandbox';
-  status: string;
+  badge: string;
   description: string;
-  images: string[];
-  specs: ProjectSpecs;
-  tools: TechStack[];
-  github?: string;
-  live?: string;
-  isFeatured?: boolean;
+  highlights?: string[];
+  images?: string[];
+  techStack: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+  contributionsUrl?: string;
+  isPrivate?: boolean;
+  isInternal?: boolean;
+  hasDiagram?: boolean;
 }
 
-export interface Project2 {
-  id: string;
-  title: string;
-  category: 'production' | 'sandbox';
-  status: string;
-  description: string;
-  images: string[];
-  specs2: ProjectSpecs2;
-  tools: TechStack[];
-  github?: string;
-  live?: string;
-  isFeatured?: boolean;
+export interface TechItem {
+  name: string;
+  group: 'framework' | 'state' | 'visual' | 'testing' | 'tooling';
 }
 
-export interface ProfessionalHistory {
+export interface Experience {
   company: string;
   role: string;
-  location: string;
   period: string;
-  description: string[];
-  logo?: string;
-}
-
-export interface SEOData {
-  title: string;
-  description: string;
-  keywords: string[];
-  ogImage?: string;
 }
