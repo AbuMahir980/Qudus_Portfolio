@@ -61,7 +61,7 @@ const Hero = () => {
 
         <motion.div variants={fadeIn}>
           <a
-            href="https://drive.google.com/file/d/1mEA3aQ91AT_TDVZ2PZTUin4Rn4bAtYJO/view?usp=sharing"
+            href="https://drive.google.com/file/d/1npPv3vtDymaV15Oe-KHTF_1MbZLjb5Wg/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-green text-white text-xs font-bold uppercase tracking-widest hover:bg-green/90 transition-colors shadow-lg shadow-black/10 active:scale-95"
