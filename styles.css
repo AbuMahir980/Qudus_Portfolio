@@ -1,0 +1,203 @@
+/* Qudus Adebola Lawal — holding page
+   Dark, high-contrast, one accent colour, system font stack, mobile-first. */
+
+:root {
+  color-scheme: dark;
+
+  --bg: #0b0f14;
+  --surface: #121a24;
+  --border: #5c6b7f;
+
+  --text: #f1f5f9;
+  --text-muted: #b6c2cf;
+  --text-faint: #94a1b0;
+
+  --accent: #e8b84a;
+  --accent-hover: #f2c862;
+  --accent-ink: #0b0f14;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout ------------------------------------------------------------------ */
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 2.5rem;
+}
+
+.content {
+  width: 100%;
+}
+
+footer {
+  padding: 1.25rem 1.25rem 1.75rem;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-faint);
+}
+
+/* Type -------------------------------------------------------------------- */
+
+h1 {
+  margin: 0 0 0.875rem;
+  font-size: clamp(2.125rem, 4vw + 1rem, 3.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+.tagline {
+  margin: 0 0 1.5rem;
+  font-size: clamp(1rem, 0.4vw + 0.9rem, 1.125rem);
+  font-weight: 500;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+.tagline .sep {
+  color: var(--accent);
+  margin: 0 0.3em;
+}
+
+.intro {
+  margin: 0 0 2.25rem;
+  max-width: 40rem;
+  font-size: 1.0625rem;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+/* Links ------------------------------------------------------------------- */
+
+.links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 2.75rem; /* 44px touch target */
+  padding: 0.625rem 1.125rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.links a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.links a.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.links a.primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--accent-ink);
+}
+
+/* Focus ------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.links a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Utilities --------------------------------------------------------------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Wider screens ----------------------------------------------------------- */
+
+@media (min-width: 40rem) {
+  main {
+    padding: 4rem 2rem 3rem;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+  }
+
+  .links a {
+    width: auto;
+    padding: 0.625rem 1.375rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
